@@ -13,7 +13,7 @@ export default function HowItWorks() {
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 text-gold-600 text-sm font-bold uppercase tracking-widest mb-4">
             <div className="w-8 h-px bg-gold-500" />
-            How It Works
+            Steps
             <div className="w-8 h-px bg-gold-500" />
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-navy-900 mb-4 tracking-tight">
