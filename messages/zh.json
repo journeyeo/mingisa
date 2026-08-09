@@ -1,0 +1,115 @@
+{
+  "nav": {
+    "why": "介绍",
+    "pricing": "路线",
+    "howItWorks": "使用方法",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "badge": "高端出租车服务",
+    "title": "特别之选，\n舒适旅程。",
+    "subtitle": "专为外国旅客打造的高端出租车服务\n从机场到目的地，安全舒适",
+    "cta": "立即咨询",
+    "ctaSub": "LINE · WhatsApp · KakaoTalk · Instagram"
+  },
+  "why": {
+    "title": "选择 MINGISA 的理由",
+    "subtitle": "专为外国旅客设计的高端服务",
+    "items": [
+      {
+        "title": "舒适的服务",
+        "desc": "从接送到目的地，舒适从容。"
+      },
+      {
+        "title": "高端车辆",
+        "desc": "提供整洁舒适的豪华车辆。长途出行也能享受VIP待遇。"
+      },
+      {
+        "title": "透明现场结算",
+        "desc": "支持刷卡·现金付款。与司机在现场直接结算。也可提前询价。"
+      },
+      {
+        "title": "便捷咨询",
+        "desc": "通过LINE、WhatsApp、KakaoTalk、Instagram联系我们。快速便捷确认预订。"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "精品路线",
+    "subtitle": "根据您的旅行风格选择",
+    "note": "※ 欢迎随时询价，支持刷卡·现金付款。",
+    "cta": "联系咨询",
+    "items": [
+      {
+        "tag": "机场接送",
+        "title": "机场 ↔ 首尔",
+        "desc": "从机场到首尔市区，舒适出行。",
+        "options": []
+      },
+      {
+        "tag": "地方出行",
+        "title": "首尔 ↔ 其他城市",
+        "desc": "釜山、江原道等地区包车出行。",
+        "options": ["釜山", "江原道", "其他地区"]
+      },
+      {
+        "tag": "包时租车",
+        "title": "自由路线",
+        "desc": "观光·购物首选。可选4h · 8h · 12h。",
+        "options": ["4小时", "8小时", "12小时"]
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "使用方法",
+    "subtitle": "三步轻松预订",
+    "steps": [
+      {
+        "step": "01",
+        "title": "发送消息咨询",
+        "desc": "告诉我们您的行程、人数、目的地和希望路线。\nLINE、WhatsApp、KakaoTalk、Instagram均可联系。"
+      },
+      {
+        "step": "02",
+        "title": "确认路线与费用",
+        "desc": "工作人员将为您推荐最佳路线和费用。\n协商后确认预订。"
+      },
+      {
+        "step": "03",
+        "title": "当天接送",
+        "desc": "司机将在指定地点·时间迎接您。\n轻松享受旅途。"
+      }
+    ]
+  },
+  "trust": {
+    "title": "值得信赖的驾驶服务",
+    "subtitle": "经验丰富的司机，全程陪伴您的珍贵旅途",
+    "kakaoBadge": "Kakao T Black 司机",
+    "points": [
+      {
+        "title": "丰富驾驶经验",
+        "desc": "多年驾驶经验，熟悉韩国道路，让您安心乘坐。"
+      },
+      {
+        "title": "安全平稳驾驶",
+        "desc": "无急刹车·急加速，提供舒适安全的驾驶体验。"
+      },
+      {
+        "title": "整洁宽敞的车内",
+        "desc": "始终保持车辆整洁。行李再多也有充足空间。"
+      }
+    ]
+  },
+  "ctaSection": {
+    "title": "随时欢迎咨询",
+    "subtitle": "通过LINE、WhatsApp、KakaoTalk、Instagram随时联系我们。",
+    "button": "立即咨询",
+    "lineId": "LINE ID: @mingisa4136",
+    "kakaoNote": "@mingisa4136"
+  },
+  "footer": {
+    "tagline": "让韩国旅行更智慧、更舒适。",
+    "company": "运营：TRAILABS",
+    "rights": "© 2025 MINGISA. All rights reserved."
+  }
+}

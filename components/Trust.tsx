@@ -17,11 +17,19 @@ const icons = [
   </svg>,
 ];
 
+const VEHICLES = ['BMW i7', 'Genesis G90', '카니발 하이리무진', 'Toyota Alphard'];
+
+const VEHICLE_LABEL: Record<string, string> = {
+  ja: 'ご用意できる車種',
+  ko: '이용 가능 차량',
+  en: 'Available Vehicles',
+};
+
 export default function Trust() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
 
   return (
-    <section className="bg-[#FDF0EC] py-24 px-4">
+    <section className="bg-[#EEF5F1] py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-gold-600 text-sm font-bold uppercase tracking-widest mb-4">
@@ -55,6 +63,24 @@ export default function Trust() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Vehicle options */}
+        <div className="mt-12 text-center">
+          <p className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-5">
+            {VEHICLE_LABEL[locale]}
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            {VEHICLES.map((car) => (
+              <span
+                key={car}
+                className="inline-flex items-center gap-2 bg-white border border-gold-500/30 text-navy-800 text-sm font-semibold px-4 py-2 rounded-full shadow-sm"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0" />
+                {car}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

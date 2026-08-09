@@ -6,7 +6,7 @@
   --navy-950: #111110;
   --navy-900: #1C1A18;
   --navy-800: #272420;
-  --gold-500: #D4956A;
+  --gold-500: #2D6A4F;
   --line-green: #06C755;
 }
 
@@ -34,7 +34,7 @@ body {
   }
 
   .gold-gradient {
-    background: linear-gradient(135deg, #D4AF37, #F0D060, #D4AF37);
+    background: linear-gradient(135deg, #1B4332, #2D6A4F, #1B4332);
   }
 
   .navy-gradient {

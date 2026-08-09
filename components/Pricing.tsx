@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from '@/contexts/LocaleContext';
-import LineButton from './LineButton';
+import ContactButtons from './ContactButtons';
 
 const icons = [
   <svg key="airport" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -24,6 +24,7 @@ const paymentPoints = [
     ),
     ja: 'カード・現金どちらもOK',
     ko: '카드·현금 모두 결제 가능',
+    zh: '支持刷卡·现金付款',
     en: 'Card & cash accepted',
   },
   {
@@ -34,6 +35,7 @@ const paymentPoints = [
     ),
     ja: '現地でドライバーに直接お支払い',
     ko: '드라이버에게 현장에서 직접 결제',
+    zh: '与司机现场直接结算',
     en: 'Pay the driver on-site',
   },
   {
@@ -42,9 +44,10 @@ const paymentPoints = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z" />
       </svg>
     ),
-    ja: '事前にLINEで料金相談OK',
-    ko: '사전에 LINE으로 요금 문의 가능',
-    en: 'Ask for a quote on LINE',
+    ja: '事前にお気軽に料金相談OK',
+    ko: '사전에 편하게 요금 문의 가능',
+    zh: '可提前随时询价',
+    en: 'Ask for a quote anytime',
   },
 ];
 
@@ -75,9 +78,7 @@ export default function Pricing() {
             <div className="mb-4">
               <p className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-2">Routes</p>
               <h3 className="text-xl font-black text-navy-900 leading-snug">
-                {locale === 'ja' && 'ご利用コース'}
-                {locale === 'ko' && '이용 코스'}
-                {locale === 'en' && 'Available Routes'}
+                {t.pricing.title}
               </h3>
             </div>
             <div className="divide-y divide-gray-200">
@@ -102,6 +103,7 @@ export default function Pricing() {
               <h3 className="text-xl font-black text-navy-900 leading-snug">
                 {locale === 'ja' && '料金・お支払いについて'}
                 {locale === 'ko' && '요금 및 결제 안내'}
+                {locale === 'zh' && '费用与结算'}
                 {locale === 'en' && 'Pricing & Payment'}
               </h3>
             </div>
@@ -113,14 +115,14 @@ export default function Pricing() {
                     {point.icon}
                   </div>
                   <p className="text-sm text-gray-600 leading-relaxed pt-1">
-                    {point[locale]}
+                    {point[locale as 'ja' | 'ko' | 'zh' | 'en']}
                   </p>
                 </div>
               ))}
             </div>
 
             <div className="pt-2">
-              <LineButton size="default" label={t.pricing.cta} />
+              <ContactButtons size="icon" />
             </div>
           </div>
 

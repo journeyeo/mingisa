@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-2">
             <div className="flex items-center">
               <span className="relative text-white font-light text-lg tracking-[0.12em]">
-                TAGO
+                MINGISA
                 <span className="absolute -bottom-0.5 left-0 w-full h-px bg-gold-500" />
               </span>
             </div>

@@ -1,24 +1,24 @@
 {
   "nav": {
-    "why": "Why TAGO",
+    "why": "Why MINGISA",
     "pricing": "Routes",
     "howItWorks": "How It Works",
-    "contact": "Book via LINE"
+    "contact": "Contact Us"
   },
   "hero": {
     "badge": "Premium Taxi Service",
-    "title": "Travel Korea\nin Style.",
+    "title": "Safe Choice,\nSmooth Ride.",
     "subtitle": "Premium private taxi for international travelers\nfrom airport to any destination in Korea",
-    "cta": "Book via LINE Now",
-    "ctaSub": "LINE Booking • Pay On-Site"
+    "cta": "Contact Us",
+    "ctaSub": "LINE · WhatsApp · KakaoTalk · Instagram"
   },
   "why": {
-    "title": "Why Choose TAGO",
+    "title": "Why Choose MINGISA",
     "subtitle": "Premium service designed for international travelers",
     "items": [
       {
-        "title": "Japanese LINE Support",
-        "desc": "Reach us in Japanese via LINE — before and during your trip. No Korean needed to book or get help."
+        "title": "Comfortable Service",
+        "desc": "Sit back and relax — a smooth, stress-free ride from pickup to drop-off."
       },
       {
         "title": "Premium Vehicles",
@@ -26,19 +26,19 @@
       },
       {
         "title": "Simple On-Site Payment",
-        "desc": "Cash and card both accepted. Pay the driver directly on-site. Ask for a fare estimate via LINE before your trip."
+        "desc": "Cash and card both accepted. Pay the driver directly on-site. Ask for a fare estimate before your trip."
       },
       {
-        "title": "Easy LINE Booking",
-        "desc": "Reserve your ride through LINE before your trip. Simple, convenient, and confirmed in advance."
+        "title": "Easy Inquiry",
+        "desc": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram. Simple, convenient, and confirmed in advance."
       }
     ]
   },
   "pricing": {
-    "title": "Our Routes",
+    "title": "Premium Routes",
     "subtitle": "Choose a route that fits your travel style",
-    "note": "※ Contact us on LINE for fare estimates. Cash and card both accepted.",
-    "cta": "Ask Us on LINE",
+    "note": "※ Contact us for fare estimates. Cash and card both accepted.",
+    "cta": "Contact Us",
     "items": [
       {
         "tag": "Airport Transfer",
@@ -66,28 +66,29 @@
     "steps": [
       {
         "step": "01",
-        "title": "Message Us on LINE",
-        "desc": "Tell us your travel dates, group size, destination, and preferred course. English is fine!"
+        "title": "Send Us a Message",
+        "desc": "Tell us your travel dates, group size, and destination.\nReach us via LINE, WhatsApp, KakaoTalk, or Instagram."
       },
       {
         "step": "02",
         "title": "Confirm Route & Price",
-        "desc": "Our team will suggest the best route and confirm pricing. Booking is confirmed only when you're satisfied."
+        "desc": "Our team will suggest the best route and confirm pricing.\nBooking is confirmed once we've agreed on the details."
       },
       {
         "step": "03",
         "title": "Enjoy Your Ride",
-        "desc": "Your driver will meet you at the designated time and place. Sit back and enjoy the journey."
+        "desc": "Your driver will meet you at the designated time and place.\nSit back and enjoy the journey."
       }
     ]
   },
   "trust": {
     "title": "A Ride You Can Count On",
     "subtitle": "An experienced driver dedicated to making your Korea trip smooth and comfortable",
+    "kakaoBadge": "Kakao T Black Driver",
     "points": [
       {
         "title": "Years of Experience",
-        "desc": "A professional driver with extensive experience navigating Korea's roads, so you can sit back and relax."
+        "desc": "Years of driving experience on Korea's roads, so you can sit back and relax."
       },
       {
         "title": "Smooth, Safe Driving",
@@ -95,19 +96,20 @@
       },
       {
         "title": "Clean, Spacious Cabin",
-        "desc": "The car is cleaned before every ride. Plenty of room for luggage and travel gear."
+        "desc": "The vehicle is always kept clean and tidy. Plenty of room for luggage and travel gear."
       }
     ]
   },
   "ctaSection": {
-    "title": "Ready to Explore Korea?",
-    "subtitle": "Message us on LINE — we reply in Japanese.",
-    "button": "Book via LINE",
-    "lineId": "LINE ID: @tago"
+    "title": "Get in Touch",
+    "subtitle": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram.",
+    "button": "Contact Us",
+    "lineId": "LINE ID: @mingisa4136",
+    "kakaoNote": "@mingisa4136"
   },
   "footer": {
     "tagline": "Making Korea travel smarter and more comfortable.",
-    "company": "Operated by Trailabs",
-    "rights": "© 2024 TAGO. All rights reserved."
+    "company": "Operated by TRAILABS",
+    "rights": "© 2025 MINGISA. All rights reserved."
   }
 }

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useLocale, type Locale } from '@/contexts/LocaleContext';
-import LineButton from './LineButton';
+import ContactButtons from './ContactButtons';
 
 export default function Header() {
   const { locale, setLocale, t } = useLocale();
@@ -36,9 +36,11 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center group">
-            <div className="w-9 h-9 rounded-lg bg-black flex flex-col items-center justify-center shrink-0 leading-none">
-              <span className="text-white text-[11px] font-black tracking-widest leading-none">TA</span>
-              <span className="text-gold-500 text-[11px] font-black tracking-widest leading-none">GO</span>
+            <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center shrink-0">
+              <svg viewBox="0 0 28 28" width="26" height="26">
+                <path d="M 3,22 L 3,6 L 14,15 L 25,6 L 25,22" fill="none" stroke="white" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M 3,22 L 3,6 L 14,15 L 25,6 L 25,22" fill="none" stroke="black" strokeWidth="1.5" strokeDasharray="3,2.5" strokeLinecap="round" />
+              </svg>
             </div>
           </a>
 
@@ -59,7 +61,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             {/* Language switcher */}
             <div className="flex items-center bg-black/5 rounded-full p-0.5">
-              {(['ja', 'ko', 'en'] as Locale[]).map((lang) => (
+              {(['ja', 'ko', 'zh', 'en'] as Locale[]).map((lang) => (
                 <button
                   key={lang}
                   type="button"
@@ -77,9 +79,9 @@ export default function Header() {
               ))}
             </div>
 
-            {/* LINE CTA - desktop only */}
+            {/* Contact icons - desktop only */}
             <div className="hidden md:block">
-              <LineButton size="sm" label={t.nav.contact} />
+              <ContactButtons size="icon" />
             </div>
 
             {/* Hamburger - mobile only */}
@@ -111,9 +113,6 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            <div className="pt-2">
-              <LineButton size="default" label={t.nav.contact} />
-            </div>
           </div>
         )}
       </div>

@@ -2,7 +2,7 @@
 
 import { useLocale } from '@/contexts/LocaleContext';
 
-const LINE_URL = 'https://line.me/R/ti/p/@tago';
+const LINE_URL = 'https://line.me/R/ti/p/@mingisa4136';
 
 interface LineButtonProps {
   size?: 'sm' | 'default' | 'lg';
