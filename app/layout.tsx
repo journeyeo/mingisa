@@ -27,21 +27,23 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.svg',
   },
-  title: 'MINGISA — 韓国プレミアムタクシーサービス',
+  title: 'MINGISA — Premium Taxi Service in Korea',
   description:
-    '外国人旅行者のための韓国プレミアムタクシーサービス。日本語対応ドライバーが空港から観光地まで安全・快適にご案内します。LINE・WhatsApp・カカオ・Instagramで簡単予約。',
-  keywords: ['韓国タクシー', '韓国旅行', '空港送迎', 'ソウル観光', 'プレミアムタクシー', 'Japan'],
+    'Premium private taxi for international travelers in Korea. Safe, comfortable rides from airport to any destination. Book via LINE, WhatsApp, KakaoTalk, or Instagram.',
+  keywords: ['Korea taxi', 'Korea travel', 'airport transfer', 'Seoul tour', 'premium taxi', 'private driver'],
   openGraph: {
-    title: 'MINGISA — 韓国プレミアムタクシーサービス',
-    description: '日本語対応ドライバーが韓国旅行をもっと快適に。LINE・WhatsApp・カカオ・Instagramで簡単予約。',
+    title: 'MINGISA — Premium Taxi Service in Korea',
+    description: 'Safe Choice, Smooth Ride. Premium private taxi for international travelers in Korea.',
     type: 'website',
-    locale: 'ja_JP',
+    locale: 'en_US',
+    url: 'https://mingisa.com',
+    siteName: 'MINGISA',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} ${inter.variable} ${archivoBlack.variable}`}>
+    <html lang="en" className={`${notoSansJP.variable} ${inter.variable} ${archivoBlack.variable}`}>
       <body className="font-sans antialiased">
         <LocaleProvider>{children}</LocaleProvider>
       </body>

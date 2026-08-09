@@ -62,7 +62,7 @@ export default function Header() {
           <div className="flex items-center gap-3">
             {/* Language switcher */}
             <div className="flex items-center bg-black/5 rounded-full p-0.5">
-              {(['ja', 'ko', 'zh', 'en'] as Locale[]).map((lang) => (
+              {(['en', 'ko', 'ja', 'zh'] as Locale[]).map((lang) => (
                 <button
                   key={lang}
                   type="button"

@@ -17,13 +17,13 @@ interface LocaleContextType {
 }
 
 const LocaleContext = createContext<LocaleContextType>({
-  locale: 'ja',
+  locale: 'en',
   setLocale: () => {},
-  t: ja,
+  t: en,
 });
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('ja');
+  const [locale, setLocaleState] = useState<Locale>('en');
 
   useEffect(() => {
     const saved = localStorage.getItem('mingisa-locale') as Locale;
