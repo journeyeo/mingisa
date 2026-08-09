@@ -67,7 +67,17 @@ export default function WhyTago() {
               </div>
 
               <h3 className="text-xl font-bold text-navy-900 mb-3">{item.title}</h3>
-              <p className="text-gray-500 leading-relaxed">{item.desc}</p>
+              <p className="text-gray-500 leading-relaxed">
+                {item.desc.split('\n').map((line, li) => (
+                  <span key={li} className={li > 0 ? 'block mt-1' : undefined}>
+                    {line.split(/(\*\*[^*]+\*\*)/).map((part, j) =>
+                      part.startsWith('**') && part.endsWith('**')
+                        ? <span key={j} className="bg-gold-500/15 text-gold-600 font-semibold px-1.5 py-0.5 rounded text-xs align-middle relative -top-px">{part.slice(2, -2)}</span>
+                        : part
+                    )}
+                  </span>
+                ))}
+              </p>
             </div>
           ))}
         </div>

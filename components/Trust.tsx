@@ -75,7 +75,7 @@ function VehicleCard({ car, locale }: { car: { name: string; nameKo: string; ima
   const displayName = locale === 'ko' ? car.nameKo : car.name;
   return (
     <div className="bg-white rounded-2xl overflow-hidden border border-gold-500/20 shadow-sm hover:shadow-md hover:border-gold-500/40 transition-all duration-300">
-      <div className="relative w-full aspect-[16/8] overflow-hidden">
+      <div className="relative w-full aspect-[16/8.5] overflow-hidden">
         <CarPlaceholder />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -89,7 +89,7 @@ function VehicleCard({ car, locale }: { car: { name: string; nameKo: string; ima
         <p className="text-navy-800 text-xs font-semibold leading-tight flex-1">{displayName}</p>
         {car.premium && (
           <span className="text-[9px] font-bold bg-gold-500 text-white px-1.5 py-0.5 rounded-full leading-none shrink-0">
-            최고급
+            {{ ko: '최고급', en: 'Exclusive', ja: '最高級', zh: '顶级' }[locale] ?? 'Exclusive'}
           </span>
         )}
         <span className="flex items-center gap-0.5 text-gray-400 shrink-0">

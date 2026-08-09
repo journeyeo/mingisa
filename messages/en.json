@@ -6,22 +6,22 @@
     "contact": "Contact Us"
   },
   "hero": {
-    "badge": "Premium Taxi Service",
+    "badge": "Private Taxi Service",
     "title": "Safe Choice,\nSmooth Ride.",
-    "subtitle": "Premium private taxi for international travelers\nfrom airport to any destination in Korea",
+    "subtitle": "Private taxi for international travelers\nfrom airport to any destination in Korea",
     "cta": "Contact Us",
     "ctaSub": "LINE · WhatsApp · KakaoTalk · Instagram"
   },
   "why": {
     "title": "Why Choose MINGISA",
-    "subtitle": "Premium service designed for international travelers",
+    "subtitle": "Private service designed for international travelers",
     "items": [
       {
         "title": "Comfortable Service",
         "desc": "Sit back and relax — a smooth, stress-free ride from pickup to drop-off"
       },
       {
-        "title": "Premium Vehicles",
+        "title": "Luxury Vehicles",
         "desc": "Clean, comfortable luxury vehicles for every ride. Experience VIP treatment from pickup to drop-off"
       },
       {
@@ -35,7 +35,7 @@
     ]
   },
   "pricing": {
-    "title": "Premium Routes",
+    "title": "Private Routes",
     "subtitle": "Choose a route that fits your travel style",
     "note": "※ Contact us for fare estimates. Cash and card both accepted.",
     "cta": "Contact Us",
