@@ -35,7 +35,7 @@ function InstagramIcon({ size }: { size: number }) {
 }
 
 const CHANNELS = [
-  { id: 'line' as const, label: 'LINE', url: 'https://line.me/R/ti/p/@mingisa4136', bg: '#06C755', dark: false },
+  { id: 'line' as const, label: 'LINE', url: 'https://line.me/ti/p/~mingisa4136', bg: '#06C755', dark: false },
   { id: 'whatsapp' as const, label: 'WhatsApp', url: 'https://wa.me/821079701587', bg: '#25D366', dark: false },
   { id: 'kakao' as const, label: 'KakaoTalk', url: KAKAO_URL, bg: '#FFCD00', dark: true },
   { id: 'instagram' as const, label: 'Instagram', url: 'https://instagram.com/mingisa4136', bg: '#E1306C', dark: false },

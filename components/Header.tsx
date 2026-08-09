@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useLocale, type Locale } from '@/contexts/LocaleContext';
 import ContactButtons from './ContactButtons';
+import ShareButton from './ShareButton';
 
 export default function Header() {
   const { locale, setLocale, t } = useLocale();
@@ -80,7 +81,8 @@ export default function Header() {
             </div>
 
             {/* Contact icons - desktop only */}
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-2">
+              <ShareButton />
               <ContactButtons size="icon" />
             </div>
 

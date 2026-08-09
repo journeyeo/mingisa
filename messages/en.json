@@ -18,19 +18,19 @@
     "items": [
       {
         "title": "Comfortable Service",
-        "desc": "Sit back and relax — a smooth, stress-free ride from pickup to drop-off."
+        "desc": "Sit back and relax — a smooth, stress-free ride from pickup to drop-off"
       },
       {
         "title": "Premium Vehicles",
-        "desc": "Clean, comfortable luxury vehicles for every ride. Experience VIP treatment from pickup to drop-off."
+        "desc": "Clean, comfortable luxury vehicles for every ride. Experience VIP treatment from pickup to drop-off"
       },
       {
         "title": "Simple On-Site Payment",
-        "desc": "Cash and card both accepted. Pay the driver directly on-site. Ask for a fare estimate before your trip."
+        "desc": "Cash and card both accepted. Pay the driver directly on-site. Ask for a fare estimate before your trip"
       },
       {
         "title": "Easy Inquiry",
-        "desc": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram. Simple, convenient, and confirmed in advance."
+        "desc": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram. Simple, convenient, and confirmed in advance"
       }
     ]
   },
@@ -43,19 +43,19 @@
       {
         "tag": "Airport Transfer",
         "title": "Airport ↔ Seoul",
-        "desc": "Smooth transfer from the airport to Seoul city center.",
+        "desc": "Smooth transfer from the airport to Seoul city center",
         "options": []
       },
       {
         "tag": "Regional Transfer",
         "title": "Seoul ↔ Other Regions",
-        "desc": "Charter to Busan, Gangwon, and beyond.",
+        "desc": "Charter to Busan, Gangwon, and beyond",
         "options": ["Busan", "Gangwon", "Other Areas"]
       },
       {
         "tag": "Time Charter",
         "title": "Flexible Charter",
-        "desc": "Ideal for sightseeing and shopping. 4h · 8h · 12h available.",
+        "desc": "Ideal for sightseeing and shopping. 4h · 8h · 12h available",
         "options": ["4 hrs", "8 hrs", "12 hrs"]
       }
     ]
@@ -67,17 +67,17 @@
       {
         "step": "01",
         "title": "Send Us a Message",
-        "desc": "Tell us your travel dates, group size, and destination.\nReach us via LINE, WhatsApp, KakaoTalk, or Instagram."
+        "desc": "Tell us your travel dates, group size, and destination\nReach us via LINE, WhatsApp, KakaoTalk, or Instagram"
       },
       {
         "step": "02",
         "title": "Confirm Route & Price",
-        "desc": "Our team will suggest the best route and confirm pricing.\nBooking is confirmed once we've agreed on the details."
+        "desc": "Our team will suggest the best route and confirm pricing\nBooking is confirmed once we've agreed on the details"
       },
       {
         "step": "03",
         "title": "Enjoy Your Ride",
-        "desc": "Your driver will meet you at the designated time and place.\nSit back and enjoy the journey."
+        "desc": "Your driver will meet you at the designated time and place\nSit back and enjoy the journey"
       }
     ]
   },
@@ -88,15 +88,15 @@
     "points": [
       {
         "title": "Years of Experience",
-        "desc": "Years of driving experience on Korea's roads, so you can sit back and relax."
+        "desc": "Years of driving experience on Korea's roads, so you can sit back and relax"
       },
       {
         "title": "Smooth, Safe Driving",
-        "desc": "Calm and careful behind the wheel — no sudden braking, no rushing. Your comfort comes first."
+        "desc": "Calm and careful behind the wheel — no sudden braking, no rushing. Your comfort comes first"
       },
       {
         "title": "Clean, Spacious Cabin",
-        "desc": "The vehicle is always kept clean and tidy. Plenty of room for luggage and travel gear."
+        "desc": "The vehicle is always kept clean and tidy. Plenty of room for luggage and travel gear"
       }
     ]
   },

@@ -17,16 +17,94 @@ const icons = [
   </svg>,
 ];
 
-const VEHICLES = ['BMW i7', 'Genesis G90', '카니발 하이리무진', 'Toyota Alphard'];
+const SEDAN = [
+  { name: '벤츠 마이바흐 S580', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
+  { name: 'BMW i7', image: '/vehicles/bmw-i7.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
+  { name: 'Genesis G90', image: '/vehicles/genesis-g90.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
+];
+const SUV = [
+  { name: '벤츠 EQS 마이바흐', image: '/vehicles/maybach-eqs.jpeg', premium: true, fit: 'cover' as const, seats: 4 },
+  { name: '카니발 하이리무진', image: '/vehicles/carnival.jpg', premium: false, fit: 'cover' as const, seats: 5 },
+  { name: 'Toyota Alphard', image: '/vehicles/alphard.jpeg', premium: false, fit: 'cover' as const, seats: 5 },
+];
 
-const VEHICLE_LABEL: Record<string, string> = {
-  ja: 'ご用意できる車種',
-  ko: '이용 가능 차량',
-  en: 'Available Vehicles',
+const LABELS: Record<string, { title: string; sedan: string; van: string; notice1: string; notice2: string }> = {
+  ko: {
+    title: '이용 가능 차량',
+    sedan: '승용',
+    van: 'SUV',
+    notice1: '차량 종류에 따라 요금이 다를 수 있습니다',
+    notice2: '원하시는 차량이 예약 중일 경우 다른 차량으로 배정 제안이 될 수 있습니다',
+  },
+  ja: {
+    title: 'ご用意できる車種',
+    sedan: 'セダン',
+    van: 'SUV',
+    notice1: '車種によって料金が異なる場合があります',
+    notice2: 'ご希望の車種が予約中の場合、別の車種をご提案する場合があります',
+  },
+  en: {
+    title: 'Available Vehicles',
+    sedan: 'Sedan',
+    van: 'SUV',
+    notice1: 'Pricing may vary depending on the vehicle',
+    notice2: 'If your preferred vehicle is unavailable, an alternative may be offered',
+  },
+  zh: {
+    title: '可用车型',
+    sedan: '轿车',
+    van: 'SUV',
+    notice1: '车型不同，费用可能有所不同',
+    notice2: '如您选择的车型已被预订，可能会为您推荐其他车型',
+  },
 };
+
+function CarPlaceholder() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200">
+      <svg className="w-20 h-12 text-gray-300" viewBox="0 0 80 40" fill="currentColor">
+        <path d="M10 28 L14 18 Q16 14 20 14 L30 12 Q36 8 44 8 L58 8 Q64 8 68 14 L72 18 L74 20 Q76 22 76 25 L76 28 Q76 30 74 30 L70 30 Q70 34 66 34 Q62 34 62 30 L26 30 Q26 34 22 34 Q18 34 18 30 L10 30 Q8 30 8 28 Z" />
+        <circle cx="22" cy="30" r="4" fill="white" />
+        <circle cx="64" cy="30" r="4" fill="white" />
+      </svg>
+    </div>
+  );
+}
+
+function VehicleCard({ car }: { car: { name: string; image: string; premium: boolean; fit: 'cover' | 'contain'; seats: number } }) {
+  return (
+    <div className="bg-white rounded-2xl overflow-hidden border border-gold-500/20 shadow-sm hover:shadow-md hover:border-gold-500/40 transition-all duration-300">
+      <div className="relative w-full aspect-[16/9] overflow-hidden">
+        <CarPlaceholder />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={car.image}
+          alt={car.name}
+          className={`absolute inset-0 w-full h-full z-10 ${car.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+          onError={(e) => { e.currentTarget.style.display = 'none'; }}
+        />
+      </div>
+      <div className="px-3 py-2.5 flex items-center gap-1.5">
+        <p className="text-navy-800 text-xs font-semibold leading-tight flex-1">{car.name}</p>
+        {car.premium && (
+          <span className="text-[9px] font-bold bg-gold-500 text-white px-1.5 py-0.5 rounded-full leading-none shrink-0">
+            최고급
+          </span>
+        )}
+        <span className="flex items-center gap-0.5 text-gray-400 shrink-0">
+          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+          <span className="text-[10px] font-semibold">{car.seats}</span>
+        </span>
+      </div>
+    </div>
+  );
+}
 
 export default function Trust() {
   const { t, locale } = useLocale();
+  const labels = LABELS[locale] ?? LABELS.en;
 
   return (
     <section className="bg-[#EEF5F1] py-24 px-4">
@@ -66,19 +144,37 @@ export default function Trust() {
         </div>
 
         {/* Vehicle options */}
-        <div className="mt-12 text-center">
-          <p className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-5">
-            {VEHICLE_LABEL[locale]}
+        <div className="mt-16">
+          <p className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-8 text-center">
+            {labels.title}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            {VEHICLES.map((car) => (
-              <span
-                key={car}
-                className="inline-flex items-center gap-2 bg-white border border-gold-500/30 text-navy-800 text-sm font-semibold px-4 py-2 rounded-full shadow-sm"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-gold-500 shrink-0" />
-                {car}
-              </span>
+
+          {/* Sedan */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-gold-500/20" />
+            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.sedan}</span>
+            <div className="flex-1 h-px bg-gold-500/20" />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+            {SEDAN.map((car) => <VehicleCard key={car.name} car={car} />)}
+          </div>
+
+          {/* SUV */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex-1 h-px bg-gold-500/20" />
+            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.van}</span>
+            <div className="flex-1 h-px bg-gold-500/20" />
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
+            {SUV.map((car) => <VehicleCard key={car.name} car={car} />)}
+          </div>
+
+          {/* Notices */}
+          <div className="flex flex-col gap-1.5 items-center">
+            {[labels.notice1, labels.notice2].map((notice, i) => (
+              <p key={i} className="text-xs text-gray-400 text-center">
+                ※ {notice}
+              </p>
             ))}
           </div>
         </div>

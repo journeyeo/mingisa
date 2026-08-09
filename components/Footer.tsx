@@ -6,7 +6,7 @@ export default function Footer() {
   const { t } = useLocale();
 
   return (
-    <footer className="bg-navy-900 border-t border-white/5 py-12 px-4">
+    <footer className="bg-navy-900 border-t border-white/5 py-12 pb-24 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo + tagline */}
