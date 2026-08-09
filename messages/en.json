@@ -35,8 +35,9 @@
     ]
   },
   "pricing": {
-    "title": "Private Routes",
-    "subtitle": "Choose a route that fits your travel style",
+    "sectionTitle": "Service Guide",
+    "title": "Available Routes",
+    "subtitle": "Routes, fares, and payment — everything you need to know",
     "note": "※ Contact us for fare estimates. Cash and card both accepted.",
     "cta": "Contact Us",
     "items": [

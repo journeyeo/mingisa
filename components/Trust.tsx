@@ -28,13 +28,14 @@ const SUV = [
   { name: 'Toyota Alphard', nameKo: '도요타 알파드', image: '/vehicles/alphard.jpeg', premium: false, fit: 'cover' as const, seats: 5 },
 ];
 
-const LABELS: Record<string, { title: string; sedan: string; van: string; notice1: string; notice2: string }> = {
+const LABELS: Record<string, { title: string; sedan: string; van: string; notice1: string; notice2: string; notice3: string }> = {
   ko: {
     title: '이용 가능 차량',
     sedan: '승용',
     van: 'SUV',
     notice1: '차량 종류에 따라 요금이 다를 수 있습니다',
     notice2: '원하시는 차량이 예약 중일 경우 다른 차량으로 배정 제안이 될 수 있습니다',
+    notice3: '운영 시간 09:00~21:00 / 이외 시간은 확인되는 대로 답변드리겠습니다',
   },
   ja: {
     title: 'ご用意できる車種',
@@ -42,6 +43,7 @@ const LABELS: Record<string, { title: string; sedan: string; van: string; notice
     van: 'SUV',
     notice1: '車種によって料金が異なる場合があります',
     notice2: 'ご希望の車種が予約中の場合、別の車種をご提案する場合があります',
+    notice3: '営業時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
   },
   en: {
     title: 'Available Vehicles',
@@ -49,6 +51,7 @@ const LABELS: Record<string, { title: string; sedan: string; van: string; notice
     van: 'SUV',
     notice1: 'Pricing may vary depending on the vehicle',
     notice2: 'If your preferred vehicle is unavailable, an alternative may be offered',
+    notice3: 'Operating hours: 9AM–9PM KST / Outside hours, we\'ll reply as soon as we see your message',
   },
   zh: {
     title: '可用车型',
@@ -56,6 +59,7 @@ const LABELS: Record<string, { title: string; sedan: string; van: string; notice
     van: 'SUV',
     notice1: '车型不同，费用可能有所不同',
     notice2: '如您选择的车型已被预订，可能会为您推荐其他车型',
+    notice3: '服务时间：09:00~21:00 / 非工作时间将在看到消息后尽快回复',
   },
 };
 
@@ -172,7 +176,7 @@ export default function Trust() {
 
           {/* Notices */}
           <div className="bg-white border border-gold-500/20 rounded-xl px-5 py-4 flex flex-col gap-2">
-            {[labels.notice1, labels.notice2].map((notice, i) => (
+            {[labels.notice1, labels.notice2, labels.notice3].map((notice, i) => (
               <p key={i} className="text-sm text-gray-600 font-medium flex items-start gap-2">
                 <span className="text-gold-500 font-bold shrink-0">※</span>
                 {notice}
