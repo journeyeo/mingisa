@@ -38,6 +38,20 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mingisa.com',
     siteName: 'MINGISA',
+    images: [
+      {
+        url: 'https://mingisa.com/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'MINGISA — Premium Taxi Service in Korea',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MINGISA — Premium Taxi Service in Korea',
+    description: 'Safe Choice, Smooth Ride. Premium private taxi for international travelers in Korea.',
+    images: ['https://mingisa.com/og-image.png'],
   },
 };
 
