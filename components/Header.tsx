@@ -75,14 +75,16 @@ export default function Header() {
                     }
                   `}
                 >
-                  {lang}
+                  {{ en: 'EN', ko: 'KR', ja: 'JP', zh: 'CN' }[lang]}
                 </button>
               ))}
             </div>
 
+            {/* Share button - always visible */}
+            <ShareButton />
+
             {/* Contact icons - desktop only */}
             <div className="hidden md:flex items-center gap-2">
-              <ShareButton />
               <ContactButtons size="icon" />
             </div>
 

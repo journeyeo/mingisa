@@ -18,14 +18,14 @@ const icons = [
 ];
 
 const SEDAN = [
-  { name: '벤츠 마이바흐 S580', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
-  { name: 'BMW i7', image: '/vehicles/bmw-i7.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
-  { name: 'Genesis G90', image: '/vehicles/genesis-g90.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
+  { name: 'Mercedes-Maybach S580', nameKo: '벤츠 마이바흐 S580', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
+  { name: 'BMW i7', nameKo: 'BMW i7', image: '/vehicles/bmw-i7.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
+  { name: 'Genesis G90', nameKo: '제네시스 G90', image: '/vehicles/genesis-g90.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
 ];
 const SUV = [
-  { name: '벤츠 EQS 마이바흐', image: '/vehicles/maybach-eqs.jpeg', premium: true, fit: 'cover' as const, seats: 4 },
-  { name: '카니발 하이리무진', image: '/vehicles/carnival.jpg', premium: false, fit: 'cover' as const, seats: 5 },
-  { name: 'Toyota Alphard', image: '/vehicles/alphard.jpeg', premium: false, fit: 'cover' as const, seats: 5 },
+  { name: 'Mercedes-Maybach EQS', nameKo: '벤츠 EQS 마이바흐', image: '/vehicles/maybach-eqs.jpeg', premium: true, fit: 'cover' as const, seats: 4 },
+  { name: 'Carnival Hi-Limousine', nameKo: '카니발 하이리무진', image: '/vehicles/carnival.jpg', premium: false, fit: 'cover' as const, seats: 5 },
+  { name: 'Toyota Alphard', nameKo: '도요타 알파드', image: '/vehicles/alphard.jpeg', premium: false, fit: 'cover' as const, seats: 5 },
 ];
 
 const LABELS: Record<string, { title: string; sedan: string; van: string; notice1: string; notice2: string }> = {
@@ -71,10 +71,11 @@ function CarPlaceholder() {
   );
 }
 
-function VehicleCard({ car }: { car: { name: string; image: string; premium: boolean; fit: 'cover' | 'contain'; seats: number } }) {
+function VehicleCard({ car, locale }: { car: { name: string; nameKo: string; image: string; premium: boolean; fit: 'cover' | 'contain'; seats: number }; locale: string }) {
+  const displayName = locale === 'ko' ? car.nameKo : car.name;
   return (
     <div className="bg-white rounded-2xl overflow-hidden border border-gold-500/20 shadow-sm hover:shadow-md hover:border-gold-500/40 transition-all duration-300">
-      <div className="relative w-full aspect-[16/9] overflow-hidden">
+      <div className="relative w-full aspect-[16/8] overflow-hidden">
         <CarPlaceholder />
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -85,7 +86,7 @@ function VehicleCard({ car }: { car: { name: string; image: string; premium: boo
         />
       </div>
       <div className="px-3 py-2.5 flex items-center gap-1.5">
-        <p className="text-navy-800 text-xs font-semibold leading-tight flex-1">{car.name}</p>
+        <p className="text-navy-800 text-xs font-semibold leading-tight flex-1">{displayName}</p>
         {car.premium && (
           <span className="text-[9px] font-bold bg-gold-500 text-white px-1.5 py-0.5 rounded-full leading-none shrink-0">
             최고급
@@ -156,7 +157,7 @@ export default function Trust() {
             <div className="flex-1 h-px bg-gold-500/20" />
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-            {SEDAN.map((car) => <VehicleCard key={car.name} car={car} />)}
+            {SEDAN.map((car) => <VehicleCard key={car.name} car={car} locale={locale} />)}
           </div>
 
           {/* SUV */}
@@ -166,14 +167,15 @@ export default function Trust() {
             <div className="flex-1 h-px bg-gold-500/20" />
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-            {SUV.map((car) => <VehicleCard key={car.name} car={car} />)}
+            {SUV.map((car) => <VehicleCard key={car.name} car={car} locale={locale} />)}
           </div>
 
           {/* Notices */}
-          <div className="flex flex-col gap-1.5 items-center">
+          <div className="bg-white border border-gold-500/20 rounded-xl px-5 py-4 flex flex-col gap-2">
             {[labels.notice1, labels.notice2].map((notice, i) => (
-              <p key={i} className="text-xs text-gray-400 text-center">
-                ※ {notice}
+              <p key={i} className="text-sm text-gray-600 font-medium flex items-start gap-2">
+                <span className="text-gold-500 font-bold shrink-0">※</span>
+                {notice}
               </p>
             ))}
           </div>
