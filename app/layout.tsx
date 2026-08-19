@@ -1,6 +1,7 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_JP, Inter, Archivo_Black } from 'next/font/google';
 import { LocaleProvider } from '@/contexts/LocaleContext';
+import PwaRegister from '@/components/PwaRegister';
 import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
@@ -23,9 +24,20 @@ const archivoBlack = Archivo_Black({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  themeColor: '#0a1628',
+};
+
 export const metadata: Metadata = {
+  manifest: '/manifest.json',
   icons: {
     icon: '/icon-512.png',
+    apple: '/m_logo_512_margin.png',
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MINGISA',
   },
   title: 'MINGISA — Premium Taxi Service in Korea',
   description:
@@ -60,6 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${notoSansJP.variable} ${inter.variable} ${archivoBlack.variable}`}>
       <body className="font-sans antialiased">
         <LocaleProvider>{children}</LocaleProvider>
+        <PwaRegister />
       </body>
     </html>
   );
