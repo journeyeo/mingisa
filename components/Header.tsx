@@ -88,7 +88,7 @@ export default function Header() {
 
             {/* Hamburger - mobile only */}
             <button
-              className="md:hidden text-navy-800 p-1"
+              className={`md:hidden p-1 ${scrolled ? 'text-navy-800' : 'text-white'}`}
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
             >
