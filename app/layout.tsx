@@ -26,10 +26,14 @@ const archivoBlack = Archivo_Black({
 
 export const viewport: Viewport = {
   themeColor: '#0a1628',
+  viewportFit: 'cover',
 };
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
+  other: {
+    'google': 'notranslate',
+  },
   icons: {
     icon: '/icon-512.png',
     apple: '/m_logo_512_margin.png',
@@ -69,7 +73,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${notoSansJP.variable} ${inter.variable} ${archivoBlack.variable}`}>
+    <html lang="en" translate="no" className={`${notoSansJP.variable} ${inter.variable} ${archivoBlack.variable}`}>
       <body className="font-sans antialiased">
         <LocaleProvider>{children}</LocaleProvider>
         <PwaRegister />

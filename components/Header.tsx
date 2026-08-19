@@ -20,6 +20,7 @@ export default function Header() {
     { href: '#why', label: t.nav.why },
     { href: '#pricing', label: t.nav.pricing },
     { href: '#how-it-works', label: t.nav.howItWorks },
+    { href: '#driver', label: t.nav.driver },
   ];
 
   return (
@@ -32,6 +33,7 @@ export default function Header() {
           : 'bg-transparent'
         }
       `}
+      style={{ paddingTop: 'env(safe-area-inset-top)' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">

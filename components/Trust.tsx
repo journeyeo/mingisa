@@ -241,7 +241,7 @@ export default function Trust() {
   const labels = LABELS[locale] ?? LABELS.en;
 
   return (
-    <section className="bg-[#EEF5F1] py-24 px-4">
+    <section id="driver" className="bg-[#EEF5F1] py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 text-gold-600 text-sm font-bold uppercase tracking-widest mb-4">

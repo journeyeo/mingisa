@@ -57,13 +57,6 @@ export default function Hero() {
         <p className="text-gray-500 text-sm font-medium">{t.hero.ctaSub}</p>
       </div>
 
-      {/* Scroll indicator */}
-      <a
-        href="#why"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-400 hover:text-gray-200 transition-colors z-20"
-      >
-        <div className="w-px h-10 bg-gradient-to-b from-gray-400 to-transparent" />
-      </a>
     </section>
   );
 }
