@@ -1,6 +1,7 @@
 'use client';
 
 import { useLocale } from '@/contexts/LocaleContext';
+import { useEffect, useRef, useState } from 'react';
 
 const icons = [
   <svg key="exp" className="w-8 h-8" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
@@ -17,56 +18,79 @@ const icons = [
   </svg>,
 ];
 
-const SEDAN = [
+const MAIN_VEHICLE = {
+  name: 'Genesis G90', nameKo: '제네시스 G90',
+  image: '/vehicles/genesis-g90.jpeg', fit: 'cover' as const, seats: 4,
+};
+
+const ALT_SEDAN = [
   { name: 'Mercedes-Maybach S580', nameKo: '벤츠 마이바흐 S580', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
   { name: 'BMW i7', nameKo: 'BMW i7', image: '/vehicles/bmw-i7.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
-  { name: 'Genesis G90', nameKo: '제네시스 G90', image: '/vehicles/genesis-g90.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
 ];
-const SUV = [
+
+const ALT_SUV = [
   { name: 'Mercedes-Maybach EQS', nameKo: '벤츠 EQS 마이바흐', image: '/vehicles/maybach-eqs.jpeg', premium: true, fit: 'cover' as const, seats: 4 },
   { name: 'Carnival Hi-Limousine', nameKo: '카니발 하이리무진', image: '/vehicles/carnival.jpg', premium: false, fit: 'cover' as const, seats: 5 },
   { name: 'Toyota Alphard', nameKo: '도요타 알파드', image: '/vehicles/alphard.jpeg', premium: false, fit: 'cover' as const, seats: 5 },
 ];
 
-const LABELS: Record<string, { title: string; sedan: string; van: string; notice1: string; notice2: string; notice3: string }> = {
+const LABELS: Record<string, {
+  title: string; mainLabel: string; altLabel: string;
+  sedan: string; suv: string; seatsUnit: string;
+  notice1: string; notice2: string; notice3: string;
+}> = {
   ko: {
     title: '이용 가능 차량',
+    mainLabel: '대표 차량',
+    altLabel: '대체 가능 차량',
     sedan: '승용',
-    van: 'SUV',
+    suv: 'SUV',
+    seatsUnit: '인승',
     notice1: '차량 종류에 따라 요금이 다를 수 있습니다',
-    notice2: '원하시는 차량이 예약 중일 경우 다른 차량으로 배정 제안이 될 수 있습니다',
+    notice2: '원하시는 차량이 예약 중일 경우 다른 차량으로 안내될 수 있습니다',
     notice3: '운영 시간 09:00~21:00 / 이외 시간은 확인되는 대로 답변드리겠습니다',
   },
   ja: {
     title: 'ご用意できる車種',
+    mainLabel: '代表車両',
+    altLabel: '代替車両',
     sedan: 'セダン',
-    van: 'SUV',
+    suv: 'SUV',
+    seatsUnit: '人乗り',
     notice1: '車種によって料金が異なる場合があります',
-    notice2: 'ご希望の車種が予約中の場合、別の車種をご提案する場合があります',
+    notice2: 'ご希望の車種が予約中の場合、別の車種をご案内する場合があります',
     notice3: '営業時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
   },
   en: {
     title: 'Available Vehicles',
+    mainLabel: 'Featured Vehicle',
+    altLabel: 'Alternative Vehicles',
     sedan: 'Sedan',
-    van: 'SUV',
+    suv: 'SUV',
+    seatsUnit: ' seats',
     notice1: 'Pricing may vary depending on the vehicle',
-    notice2: 'If your preferred vehicle is unavailable, an alternative may be offered',
-    notice3: 'Operating hours: 9AM–9PM KST / Outside hours, we\'ll reply as soon as we see your message',
+    notice2: 'If your preferred vehicle is unavailable, an alternative will be suggested',
+    notice3: "Operating hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we see your message",
   },
   zh: {
     title: '可用车型',
+    mainLabel: '代表车型',
+    altLabel: '备选车型',
     sedan: '轿车',
-    van: 'SUV',
+    suv: 'SUV',
+    seatsUnit: '座',
     notice1: '车型不同，费用可能有所不同',
-    notice2: '如您选择的车型已被预订，可能会为您推荐其他车型',
+    notice2: '如您选择的车型已被预订，将为您推荐其他车型',
     notice3: '服务时间：09:00~21:00 / 非工作时间将在看到消息后尽快回复',
   },
 };
 
+type Car = { name: string; nameKo: string; image: string; premium: boolean; fit: 'cover' | 'contain'; seats: number };
+
 function CarPlaceholder() {
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-gray-100 to-gray-200">
-      <svg className="w-20 h-12 text-gray-300" viewBox="0 0 80 40" fill="currentColor">
+      <svg className="w-14 h-8 text-gray-300" viewBox="0 0 80 40" fill="currentColor">
         <path d="M10 28 L14 18 Q16 14 20 14 L30 12 Q36 8 44 8 L58 8 Q64 8 68 14 L72 18 L74 20 Q76 22 76 25 L76 28 Q76 30 74 30 L70 30 Q70 34 66 34 Q62 34 62 30 L26 30 Q26 34 22 34 Q18 34 18 30 L10 30 Q8 30 8 28 Z" />
         <circle cx="22" cy="30" r="4" fill="white" />
         <circle cx="64" cy="30" r="4" fill="white" />
@@ -75,35 +99,143 @@ function CarPlaceholder() {
   );
 }
 
-function VehicleCard({ car, locale }: { car: { name: string; nameKo: string; image: string; premium: boolean; fit: 'cover' | 'contain'; seats: number }; locale: string }) {
-  const displayName = locale === 'ko' ? car.nameKo : car.name;
+function ImageSlider({ cars, locale }: { cars: Car[]; locale: string }) {
+  const total = cars.length;
+  // Clone first slide at the end so right-scroll loops seamlessly
+  const slides = total > 1 ? [...cars, cars[0]] : cars;
+  const [index, setIndex] = useState(0);
+  const [animated, setAnimated] = useState(true);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => setIndex(prev => prev + 1), 3000);
+  };
+
+  useEffect(() => {
+    if (total <= 1) return;
+    startTimer();
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [total]);
+
+  // After landing on the clone, instantly jump back to real index 0
+  const handleTransitionEnd = () => {
+    if (index === total) {
+      setAnimated(false);
+      setIndex(0);
+    }
+  };
+
+  // Re-enable animation after the instant jump has been painted
+  useEffect(() => {
+    if (!animated) {
+      const id = requestAnimationFrame(() => requestAnimationFrame(() => setAnimated(true)));
+      return () => cancelAnimationFrame(id);
+    }
+  }, [animated]);
+
+  const go = (idx: number) => { startTimer(); setAnimated(true); setIndex(idx); };
+  const prev = () => { startTimer(); setAnimated(true); setIndex(i => (i <= 0 ? total - 1 : i - 1)); };
+  const next = () => { startTimer(); setAnimated(true); setIndex(i => i + 1); };
+
+  const current = index >= total ? 0 : index;
+
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-gold-500/20 shadow-sm hover:shadow-md hover:border-gold-500/40 transition-all duration-300">
-      <div className="relative w-full aspect-[16/8.5] overflow-hidden">
-        <CarPlaceholder />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={car.image}
-          alt={car.name}
-          className={`absolute inset-0 w-full h-full z-10 ${car.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
-          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-        />
-      </div>
-      <div className="px-3 py-2.5 flex items-center gap-1.5">
-        <p className="text-navy-800 text-xs font-semibold leading-tight flex-1">{displayName}</p>
-        {car.premium && (
-          <span className="text-[9px] font-bold bg-gold-500 text-white px-1.5 py-0.5 rounded-full leading-none shrink-0">
-            {{ ko: '최고급', en: 'Exclusive', ja: '最高級', zh: '顶级' }[locale] ?? 'Exclusive'}
-          </span>
+    <div>
+      <div className="relative overflow-hidden rounded-xl bg-white border border-gold-500/20 shadow-sm">
+        {/* Sliding strip */}
+        <div
+          className={`flex ${animated ? 'transition-transform duration-500 ease-in-out' : ''}`}
+          style={{ transform: `translateX(-${index * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
+        >
+          {slides.map((car, i) => {
+            const displayName = locale === 'ko' ? car.nameKo : car.name;
+            return (
+              <div key={i} className="shrink-0 w-full">
+                <div className="relative aspect-[4/3]">
+                  <CarPlaceholder />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={car.image}
+                    alt={car.name}
+                    className={`absolute inset-0 w-full h-full z-10 ${car.fit === 'contain' ? 'object-contain p-2' : 'object-cover'}`}
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                  {car.premium && (
+                    <span className="absolute top-1.5 right-1.5 z-20 text-[8px] font-bold bg-gold-500 text-white px-1.5 py-0.5 rounded-full leading-none">
+                      {{ ko: '최고급', en: 'Exclusive', ja: '最高級', zh: '顶级' }[locale] ?? 'Exclusive'}
+                    </span>
+                  )}
+                </div>
+                {/* Name bar */}
+                <div className="px-3 py-2 flex items-center gap-1.5 border-t border-gold-500/10">
+                  <p className="text-navy-800 text-[11px] font-semibold leading-tight flex-1">{displayName}</p>
+                  <span className="flex items-center gap-0.5 text-gray-400 shrink-0">
+                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                    </svg>
+                    <span className="text-[10px] font-semibold">{car.seats}</span>
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Arrows */}
+        {total > 1 && (
+          <>
+            <button
+              onClick={prev}
+              aria-label="Previous"
+              className="absolute left-1.5 top-[40%] -translate-y-1/2 z-20 w-6 h-6 rounded-full bg-white/80 backdrop-blur-sm border border-gold-500/30 shadow flex items-center justify-center text-navy-800 text-base leading-none hover:bg-white transition-all"
+            >
+              ‹
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="absolute right-1.5 top-[40%] -translate-y-1/2 z-20 w-6 h-6 rounded-full bg-white/80 backdrop-blur-sm border border-gold-500/30 shadow flex items-center justify-center text-navy-800 text-base leading-none hover:bg-white transition-all"
+            >
+              ›
+            </button>
+          </>
         )}
-        <span className="flex items-center gap-0.5 text-gray-400 shrink-0">
-          <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-          </svg>
-          <span className="text-[10px] font-semibold">{car.seats}</span>
-        </span>
       </div>
+
+      {/* Dots */}
+      {total > 1 && (
+        <div className="flex justify-center gap-1.5 mt-2">
+          {cars.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => go(i)}
+              className={`h-1 rounded-full transition-all duration-300 ${i === current ? 'w-4 bg-gold-500' : 'w-1 bg-gray-300'}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
+  );
+}
+
+function VehicleList({ cars, locale, seatsUnit }: { cars: Car[]; locale: string; seatsUnit: string }) {
+  return (
+    <ul className="mt-3 flex flex-col gap-1.5">
+      {cars.map(car => (
+        <li key={car.name} className="flex items-center gap-1.5 text-navy-700">
+          <span className="text-gold-500 font-bold text-xs shrink-0">*</span>
+          <span className="text-xs font-medium flex-1 leading-tight">
+            {locale === 'ko' ? car.nameKo : car.name}
+          </span>
+          <span className="text-[10px] text-gray-400 font-semibold shrink-0 whitespace-nowrap">
+            {car.seats}{seatsUnit}
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -154,24 +286,58 @@ export default function Trust() {
             {labels.title}
           </p>
 
-          {/* Sedan */}
+          {/* Main Vehicle */}
           <div className="flex items-center gap-3 mb-4">
             <div className="flex-1 h-px bg-gold-500/20" />
-            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.sedan}</span>
+            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.mainLabel}</span>
             <div className="flex-1 h-px bg-gold-500/20" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-            {SEDAN.map((car) => <VehicleCard key={car.name} car={car} locale={locale} />)}
+          <div className="mb-10">
+            <div className="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden border-2 border-gold-500/40 shadow-md">
+              <div className="relative w-full aspect-[16/8.5] overflow-hidden">
+                <CarPlaceholder />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={MAIN_VEHICLE.image}
+                  alt={MAIN_VEHICLE.name}
+                  className="absolute inset-0 w-full h-full z-10 object-cover"
+                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                />
+              </div>
+              <div className="px-4 py-3 flex items-center gap-2">
+                <p className="text-navy-800 text-sm font-bold flex-1">
+                  {locale === 'ko' ? MAIN_VEHICLE.nameKo : MAIN_VEHICLE.name}
+                </p>
+                <span className="flex items-center gap-0.5 text-gray-400 shrink-0">
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                  </svg>
+                  <span className="text-xs font-semibold">{MAIN_VEHICLE.seats}</span>
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* SUV */}
-          <div className="flex items-center gap-3 mb-4">
+          {/* Alternative Vehicles — 2 columns */}
+          <div className="flex items-center gap-3 mb-6">
             <div className="flex-1 h-px bg-gold-500/20" />
-            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.van}</span>
+            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.altLabel}</span>
             <div className="flex-1 h-px bg-gold-500/20" />
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-            {SUV.map((car) => <VehicleCard key={car.name} car={car} locale={locale} />)}
+
+          <div className="grid grid-cols-2 gap-6 mb-10">
+            {/* 승용 */}
+            <div>
+              <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase text-center mb-3">{labels.sedan}</p>
+              <ImageSlider cars={ALT_SEDAN} locale={locale} />
+              <VehicleList cars={ALT_SEDAN} locale={locale} seatsUnit={labels.seatsUnit} />
+            </div>
+            {/* SUV */}
+            <div>
+              <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase text-center mb-3">{labels.suv}</p>
+              <ImageSlider cars={ALT_SUV} locale={locale} />
+              <VehicleList cars={ALT_SUV} locale={locale} seatsUnit={labels.seatsUnit} />
+            </div>
           </div>
 
           {/* Notices */}

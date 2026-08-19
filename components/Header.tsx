@@ -37,12 +37,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center group">
-            <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center shrink-0">
-              <svg viewBox="0 0 28 28" width="26" height="26">
-                <path d="M 3,22 L 3,6 L 14,15 L 25,6 L 25,22" fill="none" stroke="white" strokeWidth="7.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M 3,22 L 3,6 L 14,15 L 25,6 L 25,22" fill="none" stroke="black" strokeWidth="1.5" strokeDasharray="3,2.5" strokeLinecap="round" />
-              </svg>
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/icon-512.png" alt="MINGISA" className="w-9 h-9 rounded-lg object-cover" />
           </a>
 
           {/* Desktop nav */}

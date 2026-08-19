@@ -25,7 +25,7 @@ const archivoBlack = Archivo_Black({
 
 export const metadata: Metadata = {
   icons: {
-    icon: '/favicon.svg',
+    icon: '/icon-512.png',
   },
   title: 'MINGISA — Premium Taxi Service in Korea',
   description:
