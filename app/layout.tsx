@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'MINGISA',
+    title: '민기사',
   },
   title: 'MINGISA — Premium Taxi Service in Korea',
   description:
