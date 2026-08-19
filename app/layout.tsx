@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   icons: {
     icon: '/icon-512.png',
-    apple: '/m_logo_512_margin.png',
+    apple: '/m_logo_512_smaller_margin.png',
   },
   appleWebApp: {
     capable: true,

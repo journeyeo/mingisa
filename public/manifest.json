@@ -9,7 +9,7 @@
   "theme_color": "#0a1628",
   "icons": [
     {
-      "src": "/m_logo_512_margin.png",
+      "src": "/m_logo_512_smaller_margin.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
