@@ -1,4 +1,4 @@
-const CACHE = 'mingisa-v1';
+const CACHE = 'mingisa-v2';
 const PRECACHE = ['/', '/manifest.json', '/icon-512.png'];
 
 self.addEventListener('install', (e) => {
