@@ -184,37 +184,34 @@ function ImageSlider({ cars, locale }: { cars: Car[]; locale: string }) {
           })}
         </div>
 
-        {/* Arrows */}
-        {total > 1 && (
-          <>
-            <button
-              onClick={prev}
-              aria-label="Previous"
-              className="absolute left-1.5 top-[40%] -translate-y-1/2 z-20 w-6 h-6 rounded-full bg-white/80 backdrop-blur-sm border border-gold-500/30 shadow flex items-center justify-center text-navy-800 text-base leading-none hover:bg-white transition-all"
-            >
-              ‹
-            </button>
-            <button
-              onClick={next}
-              aria-label="Next"
-              className="absolute right-1.5 top-[40%] -translate-y-1/2 z-20 w-6 h-6 rounded-full bg-white/80 backdrop-blur-sm border border-gold-500/30 shadow flex items-center justify-center text-navy-800 text-base leading-none hover:bg-white transition-all"
-            >
-              ›
-            </button>
-          </>
-        )}
       </div>
 
-      {/* Dots */}
+      {/* Arrows + Dots */}
       {total > 1 && (
-        <div className="flex justify-center gap-1.5 mt-2">
-          {cars.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              className={`h-1 rounded-full transition-all duration-300 ${i === current ? 'w-4 bg-gold-500' : 'w-1 bg-gray-300'}`}
-            />
-          ))}
+        <div className="flex items-center justify-center gap-3 mt-2">
+          <button
+            onClick={prev}
+            aria-label="Previous"
+            className="text-gray-400 hover:text-navy-800 text-xl leading-none transition-colors px-1"
+          >
+            ‹
+          </button>
+          <div className="flex gap-1.5">
+            {cars.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                className={`h-1 rounded-full transition-all duration-300 ${i === current ? 'w-4 bg-gold-500' : 'w-1 bg-gray-300'}`}
+              />
+            ))}
+          </div>
+          <button
+            onClick={next}
+            aria-label="Next"
+            className="text-gray-400 hover:text-navy-800 text-xl leading-none transition-colors px-1"
+          >
+            ›
+          </button>
         </div>
       )}
     </div>
