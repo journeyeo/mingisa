@@ -24,7 +24,7 @@ const MAIN_VEHICLE = {
 };
 
 const ALT_SEDAN = [
-  { name: 'Mercedes-Maybach S580', nameKo: '벤츠 마이바흐 S580', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
+  { name: 'Mercedes-Maybach', nameKo: '벤츠 마이바흐', image: '/vehicles/maybach-s580.png', premium: true, fit: 'contain' as const, seats: 4 },
   { name: 'BMW i7', nameKo: 'BMW i7', image: '/vehicles/bmw-i7.jpeg', premium: false, fit: 'cover' as const, seats: 4 },
 ];
 
