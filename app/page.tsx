@@ -6,11 +6,13 @@ import HowItWorks from '@/components/HowItWorks';
 import Trust from '@/components/Trust';
 import CtaSection from '@/components/CtaSection';
 import Footer from '@/components/Footer';
+import FloatingNav from '@/components/FloatingNav';
 
 export default function Home() {
   return (
     <main>
       <Header />
+      <FloatingNav />
       <Hero />
       <WhyTago />
       <Pricing />
