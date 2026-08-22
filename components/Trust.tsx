@@ -121,7 +121,7 @@ function ImageSlider({ cars, locale }: { cars: Car[]; locale: string }) {
 
   // After landing on the clone, instantly jump back to real index 0
   const handleTransitionEnd = () => {
-    if (index === total) {
+    if (index >= total) {
       setAnimated(false);
       setIndex(0);
     }
@@ -137,7 +137,7 @@ function ImageSlider({ cars, locale }: { cars: Car[]; locale: string }) {
 
   const go = (idx: number) => { startTimer(); setAnimated(true); setIndex(idx); };
   const prev = () => { startTimer(); setAnimated(true); setIndex(i => (i <= 0 ? total - 1 : i - 1)); };
-  const next = () => { startTimer(); setAnimated(true); setIndex(i => i + 1); };
+  const next = () => { startTimer(); setAnimated(true); setIndex(i => i >= total ? total : i + 1); };
 
   const current = index >= total ? 0 : index;
 
