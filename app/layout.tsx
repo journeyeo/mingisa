@@ -45,11 +45,11 @@ export const metadata: Metadata = {
   },
   title: 'MINGISA — Premium Taxi Service in Korea',
   description:
-    'Premium private taxi for international travelers in Korea. Safe, comfortable rides from airport to any destination. Book via LINE, WhatsApp, KakaoTalk, or Instagram.',
-  keywords: ['Korea taxi', 'Korea travel', 'airport transfer', 'Seoul tour', 'premium taxi', 'private driver'],
+    'Private taxi for international travelers in Korea. Safe, comfortable rides from airport to any destination. Book via LINE, WhatsApp, KakaoTalk, or Instagram.',
+  keywords: ['Korea taxi', 'Korea travel', 'airport transfer', 'Seoul tour', 'private taxi', 'private driver'],
   openGraph: {
-    title: 'MINGISA — Premium Taxi Service in Korea',
-    description: 'Safe Choice, Smooth Ride. Premium private taxi for international travelers in Korea.',
+    title: 'MINGISA — Private Taxi Service in Korea',
+    description: 'Safe Choice, Smooth Ride. Private taxi for international travelers in Korea.',
     type: 'website',
     locale: 'en_US',
     url: 'https://mingisa.com',
@@ -65,8 +65,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MINGISA — Premium Taxi Service in Korea',
-    description: 'Safe Choice, Smooth Ride. Premium private taxi for international travelers in Korea.',
+    title: 'MINGISA — Private Taxi Service in Korea',
+    description: 'Safe Choice, Smooth Ride. Private taxi for international travelers in Korea.',
     images: ['https://mingisa.com/og-image.png'],
   },
 };
