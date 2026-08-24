@@ -95,45 +95,6 @@ function CarPlaceholder() {
   );
 }
 
-const MAIN_VEHICLE_IMAGES = [
-  { src: MAIN_VEHICLE.image, style: { objectFit: 'cover' as const, objectPosition: '70% 70%', transform: 'scale(1.4)', transformOrigin: '70% 70%' } },
-  { src: '/vehicles/genesis-g90-interior.png', style: { objectFit: 'cover' as const, objectPosition: 'center center' } },
-];
-
-function MainVehicleSlider() {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => setCurrent(prev => (prev + 1) % MAIN_VEHICLE_IMAGES.length), 4000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="relative w-full aspect-[16/8] overflow-hidden">
-      <CarPlaceholder />
-      {MAIN_VEHICLE_IMAGES.map((img, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          key={img.src}
-          src={img.src}
-          alt={MAIN_VEHICLE.name}
-          className={`absolute inset-0 w-full h-full z-10 transition-opacity duration-700 ${i === current ? 'opacity-100' : 'opacity-0'}`}
-          style={img.style}
-          onError={(e) => { e.currentTarget.style.display = 'none'; }}
-        />
-      ))}
-      <div className="absolute bottom-2.5 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
-        {MAIN_VEHICLE_IMAGES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`h-1 rounded-full transition-all duration-300 ${i === current ? 'w-4 bg-white' : 'w-1 bg-white/50'}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function ImageSlider({ cars, locale }: { cars: Car[]; locale: string }) {
   const total = cars.length;
@@ -321,8 +282,18 @@ export default function Trust() {
             </span>
           </div>
           <div className="bg-white border border-gold-500/20 rounded-2xl overflow-hidden shadow-sm">
-            {/* Image slider */}
-            <MainVehicleSlider />
+            {/* Image */}
+            <div className="relative w-full aspect-[16/8] overflow-hidden">
+              <CarPlaceholder />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={MAIN_VEHICLE.image}
+                alt={MAIN_VEHICLE.name}
+                className="absolute inset-0 w-full h-full z-10"
+                style={{ objectFit: 'cover', objectPosition: '70% 70%', transform: 'scale(1.4)', transformOrigin: '70% 70%' }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
+            </div>
             {/* Name */}
             <div className="px-5 py-4 flex items-center gap-3 border-b border-gold-500/10">
               <p className="text-navy-800 text-lg font-bold flex-1">
