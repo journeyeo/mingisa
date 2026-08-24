@@ -46,7 +46,7 @@ const LABELS: Record<string, {
     sedan: '승용',
     suv: 'SUV',
     seatsUnit: '인승',
-    notice2: '대표 차량이 예약 중일 시, 원하시는 경우 다른 차량으로 대체 가능합니다',
+    notice2: '대표 차량이 예약 중일 시, 다른 차종으로 대체 가능합니다',
     notice3: '운영 시간 09:00~21:00 / 이외 시간은 확인되는 대로 답변드리겠습니다',
   },
   ja: {
