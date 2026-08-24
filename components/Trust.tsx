@@ -56,8 +56,8 @@ const LABELS: Record<string, {
     sedan: 'セダン',
     suv: 'SUV',
     seatsUnit: '人乗り',
-    notice2: '代表車両がご予約中の場合、ご希望により別の車両への変更が可能です',
-    notice3: '営業時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
+    notice2: '車両がご予約中の場合、別の車種への変更が可能です',
+    notice3: 'お問い合わせ時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
   },
   en: {
     title: 'Available Vehicles',
@@ -66,8 +66,8 @@ const LABELS: Record<string, {
     sedan: 'Sedan',
     suv: 'SUV',
     seatsUnit: ' seats',
-    notice2: 'If our representative vehicle is booked, we can arrange an alternative vehicle upon request',
-    notice3: "Operating hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we see your message",
+    notice2: 'If the vehicle is booked, we can arrange an alternative vehicle type',
+    notice3: "Inquiry hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we see your message",
   },
   zh: {
     title: '可用车型',
@@ -76,8 +76,8 @@ const LABELS: Record<string, {
     sedan: '轿车',
     suv: 'SUV',
     seatsUnit: '座',
-    notice2: '如代表车型已被预订，可根据您的需求安排其他车型',
-    notice3: '服务时间：09:00~21:00 / 非工作时间将在看到消息后尽快回复',
+    notice2: '如车辆已被预订，可为您安排其他车种',
+    notice3: '咨询时间：09:00~21:00 / 非咨询时间将在看到消息后尽快回复',
   },
 };
 
