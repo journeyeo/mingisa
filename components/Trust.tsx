@@ -20,7 +20,7 @@ const icons = [
 
 const MAIN_VEHICLE = {
   name: 'Genesis G90', nameKo: '제네시스 G90',
-  image: '/vehicles/genesis-g90.jpeg', fit: 'cover' as const, seats: 4,
+  image: '/vehicles/genesis-g90.png', fit: 'cover' as const, seats: 4,
 };
 
 const ALT_SEDAN = [
@@ -284,12 +284,14 @@ export default function Trust() {
             {/* Image */}
             <div className="relative w-full aspect-[16/8] overflow-hidden">
               <CarPlaceholder />
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={MAIN_VEHICLE.image}
-                alt={MAIN_VEHICLE.name}
-                className="absolute inset-0 w-full h-full z-10 object-cover object-[center_60%]"
-                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              <div
+                className="absolute inset-0 z-10"
+                style={{
+                  backgroundImage: `url(${MAIN_VEHICLE.image})`,
+                  backgroundSize: '140%',
+                  backgroundPosition: '70% 70%',
+                  backgroundRepeat: 'no-repeat',
+                }}
               />
             </div>
             {/* Name */}
