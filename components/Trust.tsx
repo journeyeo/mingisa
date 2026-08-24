@@ -284,14 +284,13 @@ export default function Trust() {
             {/* Image */}
             <div className="relative w-full aspect-[16/8] overflow-hidden">
               <CarPlaceholder />
-              <div
-                className="absolute inset-0 z-10"
-                style={{
-                  backgroundImage: `url(${MAIN_VEHICLE.image})`,
-                  backgroundSize: '140%',
-                  backgroundPosition: '70% 70%',
-                  backgroundRepeat: 'no-repeat',
-                }}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={MAIN_VEHICLE.image}
+                alt={MAIN_VEHICLE.name}
+                className="absolute inset-0 w-full h-full z-10"
+                style={{ objectFit: 'cover', objectPosition: '70% 70%', transform: 'scale(1.4)', transformOrigin: '70% 70%' }}
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
               />
             </div>
             {/* Name */}
