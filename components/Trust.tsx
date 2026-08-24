@@ -66,7 +66,7 @@ const LABELS: Record<string, {
     sedan: 'Sedan',
     suv: 'SUV',
     seatsUnit: ' seats',
-    notice2: 'If the vehicle is booked, we can arrange an alternative vehicle type',
+    notice2: 'If the vehicle is booked, we can arrange other vehicles',
     notice3: "Inquiry hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we see your message",
   },
   zh: {
