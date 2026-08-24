@@ -37,17 +37,16 @@ const ALT_SUV = [
 const LABELS: Record<string, {
   title: string; mainLabel: string; altLabel: string;
   sedan: string; suv: string; seatsUnit: string;
-  notice1: string; notice2: string; notice3: string;
+  notice2: string; notice3: string;
 }> = {
   ko: {
-    title: '이용 가능 차량',
-    mainLabel: '대표 차량',
+    title: '차량',
+    mainLabel: '차량',
     altLabel: '대체 가능 차량',
     sedan: '승용',
     suv: 'SUV',
     seatsUnit: '인승',
-    notice1: '차량 종류에 따라 요금이 다를 수 있습니다',
-    notice2: '원하시는 차량이 예약 중일 경우 다른 차량으로 안내될 수 있습니다',
+    notice2: '대표 차량이 예약 중일 시, 원하시는 경우 다른 차량으로 대체 가능합니다',
     notice3: '운영 시간 09:00~21:00 / 이외 시간은 확인되는 대로 답변드리겠습니다',
   },
   ja: {
@@ -57,8 +56,7 @@ const LABELS: Record<string, {
     sedan: 'セダン',
     suv: 'SUV',
     seatsUnit: '人乗り',
-    notice1: '車種によって料金が異なる場合があります',
-    notice2: 'ご希望の車種が予約中の場合、別の車種をご案内する場合があります',
+    notice2: '代表車両がご予約中の場合、ご希望により別の車両への変更が可能です',
     notice3: '営業時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
   },
   en: {
@@ -68,8 +66,7 @@ const LABELS: Record<string, {
     sedan: 'Sedan',
     suv: 'SUV',
     seatsUnit: ' seats',
-    notice1: 'Pricing may vary depending on the vehicle',
-    notice2: 'If your preferred vehicle is unavailable, an alternative will be suggested',
+    notice2: 'If our representative vehicle is booked, we can arrange an alternative vehicle upon request',
     notice3: "Operating hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we see your message",
   },
   zh: {
@@ -79,8 +76,7 @@ const LABELS: Record<string, {
     sedan: '轿车',
     suv: 'SUV',
     seatsUnit: '座',
-    notice1: '车型不同，费用可能有所不同',
-    notice2: '如您选择的车型已被预订，将为您推荐其他车型',
+    notice2: '如代表车型已被预订，可根据您的需求安排其他车型',
     notice3: '服务时间：09:00~21:00 / 非工作时间将在看到消息后尽快回复',
   },
 };
@@ -279,72 +275,44 @@ export default function Trust() {
 
         {/* Vehicle options */}
         <div className="mt-16">
-          <p className="text-xs font-bold text-gold-600 uppercase tracking-widest mb-8 text-center">
-            {labels.title}
-          </p>
-
-          {/* Main Vehicle */}
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex-1 h-px bg-gold-500/20" />
-            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.mainLabel}</span>
-            <div className="flex-1 h-px bg-gold-500/20" />
+          <div className="flex justify-center mb-8">
+            <span className="bg-gold-500/10 border border-gold-500/40 text-gold-700 text-base font-bold px-5 py-1.5 rounded-full">
+              {labels.title}
+            </span>
           </div>
-          <div className="mb-10">
-            <div className="max-w-sm mx-auto bg-white rounded-2xl overflow-hidden border-2 border-gold-500/40 shadow-md">
-              <div className="relative w-full aspect-[16/8.5] overflow-hidden">
-                <CarPlaceholder />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={MAIN_VEHICLE.image}
-                  alt={MAIN_VEHICLE.name}
-                  className="absolute inset-0 w-full h-full z-10 object-cover"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
-              </div>
-              <div className="px-4 py-3 flex items-center gap-2">
-                <p className="text-navy-800 text-sm font-bold flex-1">
-                  {locale === 'ko' ? MAIN_VEHICLE.nameKo : MAIN_VEHICLE.name}
-                </p>
-                <span className="flex items-center gap-0.5 text-gray-400 shrink-0">
-                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-                  </svg>
-                  <span className="text-xs font-semibold">{MAIN_VEHICLE.seats}</span>
-                </span>
-              </div>
+          <div className="bg-white border border-gold-500/20 rounded-2xl overflow-hidden shadow-sm">
+            {/* Image */}
+            <div className="relative w-full aspect-[16/8] overflow-hidden">
+              <CarPlaceholder />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={MAIN_VEHICLE.image}
+                alt={MAIN_VEHICLE.name}
+                className="absolute inset-0 w-full h-full z-10 object-cover object-[center_60%]"
+                onError={(e) => { e.currentTarget.style.display = 'none'; }}
+              />
             </div>
-          </div>
-
-          {/* Alternative Vehicles — 2 columns */}
-          <div className="flex items-center gap-3 mb-6">
-            <div className="flex-1 h-px bg-gold-500/20" />
-            <span className="text-sm font-bold text-navy-800 tracking-wide">{labels.altLabel}</span>
-            <div className="flex-1 h-px bg-gold-500/20" />
-          </div>
-
-          <div className="grid grid-cols-2 gap-6 mb-10">
-            {/* 승용 */}
-            <div>
-              <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase text-center mb-3">{labels.sedan}</p>
-              <ImageSlider cars={ALT_SEDAN} locale={locale} />
-              <VehicleList cars={ALT_SEDAN} locale={locale} seatsUnit={labels.seatsUnit} />
-            </div>
-            {/* SUV */}
-            <div>
-              <p className="text-xs font-semibold text-gray-400 tracking-widest uppercase text-center mb-3">{labels.suv}</p>
-              <ImageSlider cars={ALT_SUV} locale={locale} />
-              <VehicleList cars={ALT_SUV} locale={locale} seatsUnit={labels.seatsUnit} />
-            </div>
-          </div>
-
-          {/* Notices */}
-          <div className="bg-white border border-gold-500/20 rounded-xl px-5 py-4 flex flex-col gap-2">
-            {[labels.notice1, labels.notice2, labels.notice3].map((notice, i) => (
-              <p key={i} className="text-sm text-gray-600 font-medium flex items-start gap-2">
-                <span className="text-gold-500 font-bold shrink-0">※</span>
-                {notice}
+            {/* Name */}
+            <div className="px-5 py-4 flex items-center gap-3 border-b border-gold-500/10">
+              <p className="text-navy-800 text-lg font-bold flex-1">
+                {locale === 'ko' ? MAIN_VEHICLE.nameKo : MAIN_VEHICLE.name}
               </p>
-            ))}
+              <span className="flex items-center gap-1 text-gray-400 shrink-0">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                </svg>
+                <span className="text-sm font-semibold">{MAIN_VEHICLE.seats}{labels.seatsUnit}</span>
+              </span>
+            </div>
+            {/* Notices */}
+            <div className="px-5 py-4 flex flex-col gap-2">
+              {[labels.notice2, labels.notice3].map((notice, i) => (
+                <p key={i} className="text-sm text-gray-500 flex items-start gap-2">
+                  <span className="text-gold-500 font-bold shrink-0">※</span>
+                  {notice}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -26,6 +26,7 @@ export default function Footer() {
               { href: '#why', label: t.nav.why },
               { href: '#pricing', label: t.nav.pricing },
               { href: '#how-it-works', label: t.nav.howItWorks },
+              { href: '#driver', label: t.nav.driver },
             ].map((link) => (
               <a
                 key={link.href}

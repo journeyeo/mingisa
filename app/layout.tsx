@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     statusBarStyle: 'black-translucent',
     title: '민기사',
   },
-  title: 'MINGISA — Premium Taxi Service in Korea',
+  title: 'MINGISA — Private Taxi Service in Korea',
   description:
     'Private taxi for international travelers in Korea. Safe, comfortable rides from airport to any destination. Book via LINE, WhatsApp, KakaoTalk, or Instagram.',
   keywords: ['Korea taxi', 'Korea travel', 'airport transfer', 'Seoul tour', 'private taxi', 'private driver'],
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
         url: 'https://mingisa.com/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'MINGISA — Premium Taxi Service in Korea',
+        alt: 'MINGISA — Private Taxi Service in Korea',
       },
     ],
   },
