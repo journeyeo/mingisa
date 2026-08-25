@@ -40,8 +40,8 @@ const LABELS: Record<string, {
   notice2: string; notice3: string;
 }> = {
   ko: {
-    title: '차량',
-    mainLabel: '차량',
+    title: '이용 차량',
+    mainLabel: '이용 차량',
     altLabel: '대체 가능 차량',
     sedan: '승용',
     suv: 'SUV',
