@@ -37,7 +37,7 @@ const ALT_SUV = [
 const LABELS: Record<string, {
   title: string; mainLabel: string; altLabel: string;
   sedan: string; suv: string; seatsUnit: string;
-  notice2: string; notice3: string;
+  notice2: string; notice3: string; notice4: string;
 }> = {
   ko: {
     title: '이용 차량',
@@ -46,8 +46,9 @@ const LABELS: Record<string, {
     sedan: '승용',
     suv: 'SUV',
     seatsUnit: '인승',
-    notice2: '차량이 예약 중일 시, 다른 차종으로 대체 가능합니다',
-    notice3: '문의 시간 09:00~21:00 / 이외 시간은 확인되는 대로 답변드리겠습니다',
+    notice2: '당일 예약은 출발 2시간 전에 문의해 주세요',
+    notice3: '차량이 예약 중일 시, 다른 차종으로 대체 가능합니다',
+    notice4: '24시간 문의 가능하며, 확인되는 대로 답변드리겠습니다',
   },
   ja: {
     title: 'ご用意できる車種',
@@ -56,8 +57,9 @@ const LABELS: Record<string, {
     sedan: 'セダン',
     suv: 'SUV',
     seatsUnit: '人乗り',
-    notice2: '車両がご予約中の場合、別の車種への変更が可能です',
-    notice3: 'お問い合わせ時間 09:00~21:00 / 時間外はご確認次第ご返答いたします',
+    notice2: '当日予約は出発の2時間前にお問い合わせください',
+    notice3: '車両がご予約中の場合、別の車種への変更が可能です',
+    notice4: '24時間いつでもお問い合わせいただけます。確認次第ご返答いたします。',
   },
   en: {
     title: 'Available Vehicles',
@@ -66,8 +68,9 @@ const LABELS: Record<string, {
     sedan: 'Sedan',
     suv: 'SUV',
     seatsUnit: ' seats',
-    notice2: 'If the vehicle is booked, we can arrange other vehicles',
-    notice3: "Inquiry hours: 9AM–9PM KST / Outside hours, we'll reply as soon as we read your message",
+    notice2: 'For same-day bookings, please contact us 2 hours before departure',
+    notice3: 'If the vehicle is booked, we can arrange other vehicles',
+    notice4: "Available for inquiries 24/7 — we'll reply as soon as we read your message",
   },
   zh: {
     title: '可用车型',
@@ -76,8 +79,9 @@ const LABELS: Record<string, {
     sedan: '轿车',
     suv: 'SUV',
     seatsUnit: '座',
-    notice2: '如车辆已被预订，可为您安排其他车种',
-    notice3: '咨询时间：09:00~21:00 / 非咨询时间将在看到消息后尽快回复',
+    notice2: '当日预订请在出发2小时前咨询',
+    notice3: '如车辆已被预订，可为您安排其他车种',
+    notice4: '24小时均可咨询，看到消息后将尽快回复',
   },
 };
 
@@ -308,7 +312,7 @@ export default function Trust() {
             </div>
             {/* Notices */}
             <div className="px-5 py-4 flex flex-col gap-2">
-              {[labels.notice2, labels.notice3].map((notice, i) => (
+              {[labels.notice2, labels.notice3, labels.notice4].map((notice, i) => (
                 <p key={i} className="text-sm text-gray-500 flex items-start gap-2">
                   <span className="text-gold-500 font-bold shrink-0">※</span>
                   {notice}
