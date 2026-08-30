@@ -1,6 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+import { useLocale } from '@/contexts/LocaleContext';
+
 const KAKAO_URL = 'https://pf.kakao.com/_kszRX/chat';
+const WECHAT_ID = 'mingisa4136';
 
 function LineIcon({ size }: { size: number }) {
   return (
@@ -34,18 +38,109 @@ function InstagramIcon({ size }: { size: number }) {
   );
 }
 
-const CHANNELS = [
+function WeChatIcon({ size }: { size: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.295.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.832.403c-.498-.931-.78-1.99-.78-3.104 0-3.546 3.218-6.427 7.187-6.427.294 0 .584.018.87.052C15.246 4.564 12.239 2.188 8.691 2.188zm-2.46 3.809a.983.983 0 1 1 0 1.966.983.983 0 0 1 0-1.966zm4.918 0a.983.983 0 1 1 0 1.966.983.983 0 0 1 0-1.966zM24 13.783c0-3.374-3.218-6.12-7.187-6.12-3.969 0-7.187 2.746-7.187 6.12 0 3.374 3.218 6.12 7.187 6.12.868 0 1.7-.13 2.476-.37a.75.75 0 0 1 .622.085l1.658.972a.285.285 0 0 0 .146.047.257.257 0 0 0 .257-.257c0-.063-.025-.123-.042-.185l-.34-1.29a.515.515 0 0 1 .185-.579C23.016 17.606 24 15.784 24 13.783zm-9.826-1.13a.857.857 0 1 1 0-1.713.857.857 0 0 1 0 1.714zm5.278 0a.857.857 0 1 1 0-1.713.857.857 0 0 1 0 1.714z" />
+    </svg>
+  );
+}
+
+const CHANNELS_TOP = [
   { id: 'line' as const, label: 'LINE', url: 'https://line.me/ti/p/~mingisa4136', bg: '#06C755', dark: false },
   { id: 'whatsapp' as const, label: 'WhatsApp', url: 'https://wa.me/821079701587', bg: '#25D366', dark: false },
+  { id: 'wechat' as const, label: 'WeChat', url: null, bg: '#07C160', dark: false },
+];
+
+const CHANNELS_BOTTOM = [
   { id: 'kakao' as const, label: 'KakaoTalk', url: KAKAO_URL, bg: '#FFCD00', dark: true },
   { id: 'instagram' as const, label: 'Instagram', url: 'https://instagram.com/mingisa4136', bg: '#E1306C', dark: false },
 ];
 
-const ICONS = { line: LineIcon, whatsapp: WhatsAppIcon, kakao: KakaoIcon, instagram: InstagramIcon };
+const CHANNELS = [...CHANNELS_TOP, ...CHANNELS_BOTTOM];
+
+const ICONS = { line: LineIcon, whatsapp: WhatsAppIcon, kakao: KakaoIcon, instagram: InstagramIcon, wechat: WeChatIcon };
 
 interface Props {
   size?: 'icon' | 'default';
   className?: string;
+}
+
+const WECHAT_MODAL_LABELS = {
+  ko: { desc: '위챗 앱에서 친구 검색으로\nID를 검색해 추가해주세요', open: '위챗 앱 열기', close: '닫기' },
+  ja: { desc: 'WeChatアプリの友達検索で\nIDを検索して追加してください', open: 'WeChatアプリを開く', close: '閉じる' },
+  en: { desc: 'Search for this ID in WeChat\nto add us as a friend', open: 'Open WeChat', close: 'Close' },
+  zh: { desc: '在微信App中搜索此ID\n添加好友', open: '打开微信', close: '关闭' },
+};
+
+function WeChatModal({ onClose }: { onClose: () => void }) {
+  const { locale } = useLocale();
+  const labels = WECHAT_MODAL_LABELS[locale] ?? WECHAT_MODAL_LABELS.en;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="bg-white rounded-2xl shadow-xl px-8 py-7 w-72 text-center flex flex-col gap-4"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-center gap-2">
+          <WeChatIcon size={20} />
+          <p className="text-base font-bold text-gray-800">WeChat</p>
+        </div>
+        <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
+          <span className="text-sm font-semibold text-gray-700">{WECHAT_ID}</span>
+          <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-[#e8f5e9] text-[#07C160]">
+            복사됨!
+          </span>
+        </div>
+        <p className="text-sm text-gray-500 leading-relaxed whitespace-pre-line">
+          {labels.desc}
+        </p>
+        <a
+          href="weixin://"
+          className="w-full py-2.5 rounded-full font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
+          style={{ backgroundColor: '#07C160' }}
+        >
+          {labels.open}
+        </a>
+        <button
+          onClick={onClose}
+          className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+        >
+          {labels.close}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function WeChatButton({ size, style, className }: { size: 'icon' | 'default'; style: React.CSSProperties; className: string }) {
+  const [open, setOpen] = useState(false);
+
+  const handleClick = () => {
+    navigator.clipboard.writeText(WECHAT_ID);
+    setOpen(true);
+  };
+
+  return (
+    <>
+      <button
+        onClick={handleClick}
+        title="WeChat"
+        className={size === 'icon'
+          ? 'w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95'
+          : className}
+        style={style}
+      >
+        <WeChatIcon size={size === 'icon' ? 16 : 17} />
+        {size === 'default' && <span className="truncate">WeChat</span>}
+      </button>
+      {open && <WeChatModal onClose={() => setOpen(false)} />}
+    </>
+  );
 }
 
 export default function ContactButtons({ size = 'default', className = '' }: Props) {
@@ -53,11 +148,21 @@ export default function ContactButtons({ size = 'default', className = '' }: Pro
     return (
       <div className={`flex items-center gap-1.5 ${className}`}>
         {CHANNELS.map((ch) => {
+          if (ch.id === 'wechat') {
+            return (
+              <WeChatButton
+                key="wechat"
+                size="icon"
+                style={{ backgroundColor: ch.bg, color: 'white' }}
+                className=""
+              />
+            );
+          }
           const Icon = ICONS[ch.id];
           return (
             <a
               key={ch.id}
-              href={ch.url}
+              href={ch.url!}
               target="_blank"
               rel="noopener noreferrer"
               title={ch.label}
@@ -73,23 +178,55 @@ export default function ContactButtons({ size = 'default', className = '' }: Pro
   }
 
   return (
-    <div className={`grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 w-full max-w-xs sm:max-w-none ${className}`}>
-      {CHANNELS.map((ch) => {
-        const Icon = ICONS[ch.id];
-        return (
-          <a
-            key={ch.id}
-            href={ch.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
-            style={{ backgroundColor: ch.bg, color: ch.dark ? '#1a1a1a' : 'white' }}
-          >
-            <Icon size={17} />
-            <span className="truncate">{ch.label}</span>
-          </a>
-        );
-      })}
+    <div className={`flex flex-col items-center gap-2 sm:gap-3 w-full ${className}`}>
+      {/* 상단: 초록 3개 */}
+      <div className="flex justify-center gap-2 sm:gap-3">
+        {CHANNELS_TOP.map((ch) => {
+          if (ch.id === 'wechat') {
+            return (
+              <WeChatButton
+                key="wechat"
+                size="default"
+                style={{ backgroundColor: ch.bg, color: 'white' }}
+                className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              />
+            );
+          }
+          const Icon = ICONS[ch.id];
+          return (
+            <a
+              key={ch.id}
+              href={ch.url!}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              style={{ backgroundColor: ch.bg, color: 'white' }}
+            >
+              <Icon size={17} />
+              <span className="truncate">{ch.label}</span>
+            </a>
+          );
+        })}
+      </div>
+      {/* 하단: 나머지 2개 */}
+      <div className="flex justify-center gap-2 sm:gap-3">
+        {CHANNELS_BOTTOM.map((ch) => {
+          const Icon = ICONS[ch.id];
+          return (
+            <a
+              key={ch.id}
+              href={ch.url!}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              style={{ backgroundColor: ch.bg, color: ch.dark ? '#1a1a1a' : 'white' }}
+            >
+              <Icon size={17} />
+              <span className="truncate">{ch.label}</span>
+            </a>
+          );
+        })}
+      </div>
     </div>
   );
 }

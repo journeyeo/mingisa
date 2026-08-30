@@ -11,7 +11,7 @@
     "title": "特別な選択、\n快適な旅。",
     "subtitle": "外国人旅行者に寄り添う\nプライベートタクシーサービスです",
     "cta": "お問い合わせ",
-    "ctaSub": "LINE · WhatsApp · カカオ · Instagram"
+    "ctaSub": "LINE · WhatsApp · WeChat · カカオ · Instagram"
   },
   "why": {
     "title": "MINGISAが選ばれる理由",
@@ -31,7 +31,7 @@
       },
       {
         "title": "簡単お問い合わせ",
-        "desc": "LINE・WhatsApp・カカオトーク・Instagramからお気軽にどうぞ。旅行前にしっかり準備できます"
+        "desc": "LINE・WhatsApp・WeChat・カカオトーク・Instagramからお気軽にどうぞ。旅行前にしっかり準備できます"
       }
     ]
   },
@@ -69,7 +69,7 @@
       {
         "step": "01",
         "title": "メッセージでお問い合わせ",
-        "desc": "日程・人数・目的地・希望コースをお知らせください\nLINE・WhatsApp・カカオ・Instagramでご連絡いただけます"
+        "desc": "日程・人数・目的地・希望コースをお知らせください\nLINE・WhatsApp・WeChat・カカオ・Instagramでご連絡いただけます"
       },
       {
         "step": "02",
@@ -104,7 +104,7 @@
   },
   "ctaSection": {
     "title": "お気軽にご連絡ください",
-    "subtitle": "LINE・WhatsApp・カカオ・Instagramでお気軽にご連絡ください。",
+    "subtitle": "LINE・WhatsApp・WeChat・カカオ・Instagramでお気軽にご連絡ください。",
     "button": "今すぐ問い合わせる",
     "lineId": "LINE ID: @mingisa4136",
     "kakaoNote": "@mingisa4136"

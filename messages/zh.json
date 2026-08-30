@@ -11,7 +11,7 @@
     "title": "特别之选，\n舒适旅程。",
     "subtitle": "专为外国旅客打造的私人出租车服务\n从机场到目的地，安全舒适",
     "cta": "立即咨询",
-    "ctaSub": "LINE · WhatsApp · KakaoTalk · Instagram"
+    "ctaSub": "LINE · WhatsApp · WeChat · KakaoTalk · Instagram"
   },
   "why": {
     "title": "选择 MINGISA 的理由",
@@ -31,7 +31,7 @@
       },
       {
         "title": "便捷咨询",
-        "desc": "通过LINE、WhatsApp、KakaoTalk、Instagram联系我们。快速便捷确认预订。"
+        "desc": "通过LINE、WhatsApp、WeChat、KakaoTalk、Instagram联系我们。快速便捷确认预订。"
       }
     ]
   },
@@ -69,7 +69,7 @@
       {
         "step": "01",
         "title": "发送消息咨询",
-        "desc": "告诉我们您的行程、人数、目的地和希望路线。\nLINE、WhatsApp、KakaoTalk、Instagram均可联系。"
+        "desc": "告诉我们您的行程、人数、目的地和希望路线。\nLINE、WhatsApp、WeChat、KakaoTalk、Instagram均可联系。"
       },
       {
         "step": "02",
@@ -104,7 +104,7 @@
   },
   "ctaSection": {
     "title": "随时欢迎咨询",
-    "subtitle": "通过LINE、WhatsApp、KakaoTalk、Instagram随时联系我们。",
+    "subtitle": "通过LINE、WhatsApp、WeChat、KakaoTalk、Instagram随时联系我们。",
     "button": "立即咨询",
     "lineId": "LINE ID: @mingisa4136",
     "kakaoNote": "@mingisa4136"

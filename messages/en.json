@@ -11,7 +11,7 @@
     "title": "Safe Choice,\nSmooth Ride.",
     "subtitle": "Private taxi for international travelers\nfrom airport to any destination in Korea",
     "cta": "Contact Us",
-    "ctaSub": "LINE · WhatsApp · KakaoTalk · Instagram"
+    "ctaSub": "LINE · WhatsApp · WeChat · KakaoTalk · Instagram"
   },
   "why": {
     "title": "Why Choose MINGISA",
@@ -31,7 +31,7 @@
       },
       {
         "title": "Easy Inquiry",
-        "desc": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram. Simple, convenient, and confirmed in advance"
+        "desc": "Reach us via LINE, WhatsApp, WeChat, KakaoTalk, or Instagram. Simple, convenient, and confirmed in advance"
       }
     ]
   },
@@ -69,7 +69,7 @@
       {
         "step": "01",
         "title": "Send Us a Message",
-        "desc": "Tell us your travel dates, group size, and destination\nReach us via LINE, WhatsApp, KakaoTalk, or Instagram"
+        "desc": "Tell us your travel dates, group size, and destination\nReach us via LINE, WhatsApp, WeChat, KakaoTalk, or Instagram"
       },
       {
         "step": "02",
@@ -104,7 +104,7 @@
   },
   "ctaSection": {
     "title": "Get in Touch",
-    "subtitle": "Reach us via LINE, WhatsApp, KakaoTalk, or Instagram.",
+    "subtitle": "Reach us via LINE, WhatsApp, WeChat, KakaoTalk, or Instagram.",
     "button": "Contact Us",
     "lineId": "LINE ID: @mingisa4136",
     "kakaoNote": "@mingisa4136"
