@@ -67,10 +67,10 @@ interface Props {
 }
 
 const WECHAT_MODAL_LABELS = {
-  ko: { desc: '위챗 앱에서 친구 검색으로\nID를 검색해 추가해주세요', open: '위챗 앱 열기', close: '닫기' },
-  ja: { desc: 'WeChatアプリの友達検索で\nIDを検索して追加してください', open: 'WeChatアプリを開く', close: '閉じる' },
-  en: { desc: 'Search for this ID in WeChat\nto add us as a friend', open: 'Open WeChat', close: 'Close' },
-  zh: { desc: '在微信App中搜索此ID\n添加好友', open: '打开微信', close: '关闭' },
+  ko: { copied: '복사됨!', desc: '위챗 앱에서 친구 검색으로\nID를 검색해 추가해주세요', open: '위챗 앱 열기', close: '닫기' },
+  ja: { copied: 'コピー済み!', desc: 'WeChatアプリの友達検索で\nIDを検索して追加してください', open: 'WeChatアプリを開く', close: '閉じる' },
+  en: { copied: 'Copied!', desc: 'Search for this ID in WeChat\nto add us as a friend', open: 'Open WeChat', close: 'Close' },
+  zh: { copied: '已复制!', desc: '在微信App中搜索此ID\n添加好友', open: '打开微信', close: '关闭' },
 };
 
 function WeChatModal({ onClose }: { onClose: () => void }) {
@@ -93,7 +93,7 @@ function WeChatModal({ onClose }: { onClose: () => void }) {
         <div className="bg-gray-50 rounded-xl px-4 py-3 flex items-center justify-between gap-3">
           <span className="text-sm font-semibold text-gray-700">{WECHAT_ID}</span>
           <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-[#e8f5e9] text-[#07C160]">
-            복사됨!
+            {labels.copied}
           </span>
         </div>
         <p className="text-sm text-gray-500 leading-relaxed whitespace-pre-line">
