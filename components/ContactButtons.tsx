@@ -47,14 +47,14 @@ function WeChatIcon({ size }: { size: number }) {
 }
 
 const CHANNELS_TOP = [
-  { id: 'line' as const, label: 'LINE', url: 'https://line.me/ti/p/~mingisa4136', bg: '#06C755', dark: false },
-  { id: 'whatsapp' as const, label: 'WhatsApp', url: 'https://wa.me/821079701587', bg: '#25D366', dark: false },
-  { id: 'wechat' as const, label: 'WeChat', url: null, bg: '#07C160', dark: false },
+  { id: 'kakao' as const, label: 'KakaoTalk', url: KAKAO_URL, bg: '#FFCD00', dark: true },
+  { id: 'instagram' as const, label: 'Instagram', url: 'https://instagram.com/mingisa4136', bg: '#E1306C', dark: false },
 ];
 
 const CHANNELS_BOTTOM = [
-  { id: 'kakao' as const, label: 'KakaoTalk', url: KAKAO_URL, bg: '#FFCD00', dark: true },
-  { id: 'instagram' as const, label: 'Instagram', url: 'https://instagram.com/mingisa4136', bg: '#E1306C', dark: false },
+  { id: 'line' as const, label: 'LINE', url: 'https://line.me/ti/p/~mingisa4136', bg: '#06C755', dark: false },
+  { id: 'whatsapp' as const, label: 'WhatsApp', url: 'https://wa.me/821079701587', bg: '#25D366', dark: false },
+  { id: 'wechat' as const, label: 'WeChat', url: null, bg: '#07C160', dark: false },
 ];
 
 const CHANNELS = [...CHANNELS_TOP, ...CHANNELS_BOTTOM];
@@ -179,9 +179,28 @@ export default function ContactButtons({ size = 'default', className = '' }: Pro
 
   return (
     <div className={`flex flex-col items-center gap-2 sm:gap-3 w-full ${className}`}>
-      {/* 상단: 초록 3개 */}
+      {/* 상단: 카카오·인스타 */}
       <div className="flex justify-center gap-2 sm:gap-3">
         {CHANNELS_TOP.map((ch) => {
+          const Icon = ICONS[ch.id];
+          return (
+            <a
+              key={ch.id}
+              href={ch.url!}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
+              style={{ backgroundColor: ch.bg, color: ch.dark ? '#1a1a1a' : 'white' }}
+            >
+              <Icon size={17} />
+              <span className="truncate">{ch.label}</span>
+            </a>
+          );
+        })}
+      </div>
+      {/* 하단: LINE·WhatsApp·WeChat */}
+      <div className="flex justify-center gap-2 sm:gap-3">
+        {CHANNELS_BOTTOM.map((ch) => {
           if (ch.id === 'wechat') {
             return (
               <WeChatButton
@@ -201,25 +220,6 @@ export default function ContactButtons({ size = 'default', className = '' }: Pro
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
               style={{ backgroundColor: ch.bg, color: 'white' }}
-            >
-              <Icon size={17} />
-              <span className="truncate">{ch.label}</span>
-            </a>
-          );
-        })}
-      </div>
-      {/* 하단: 나머지 2개 */}
-      <div className="flex justify-center gap-2 sm:gap-3">
-        {CHANNELS_BOTTOM.map((ch) => {
-          const Icon = ICONS[ch.id];
-          return (
-            <a
-              key={ch.id}
-              href={ch.url!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 px-3 py-2.5 sm:px-6 sm:py-3.5 rounded-full font-bold text-sm transition-all duration-200 hover:scale-105 active:scale-95 hover:shadow-lg"
-              style={{ backgroundColor: ch.bg, color: ch.dark ? '#1a1a1a' : 'white' }}
             >
               <Icon size={17} />
               <span className="truncate">{ch.label}</span>

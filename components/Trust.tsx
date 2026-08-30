@@ -48,7 +48,7 @@ const LABELS: Record<string, {
     seatsUnit: '인승',
     notice2: '당일 예약은 출발 최소 2시간 전에 문의해 주세요',
     notice3: '차량이 예약 중일 시, 다른 차종으로 대체 가능합니다',
-    notice4: '24시간 문의 가능하며, 확인되는 대로 답변드리겠습니다',
+    notice4: '24시간 문의 가능, 확인 후 신속하게 답변드리겠습니다',
   },
   ja: {
     title: 'ご用意できる車種',
@@ -59,7 +59,7 @@ const LABELS: Record<string, {
     seatsUnit: '人乗り',
     notice2: '当日予約は出発の少なくとも2時間前にお問い合わせください',
     notice3: '車両がご予約中の場合、別の車種への変更が可能です',
-    notice4: '24時間いつでもお問い合わせいただけます。確認次第ご返答いたします。',
+    notice4: '24時間いつでもお問い合わせいただけます。確認後、迅速にご返答いたします。',
   },
   en: {
     title: 'Available Vehicles',
@@ -70,7 +70,7 @@ const LABELS: Record<string, {
     seatsUnit: ' seats',
     notice2: 'For same-day bookings, please contact us at least 2 hours before departure',
     notice3: 'If the vehicle is booked, we can arrange other vehicles',
-    notice4: "Available for inquiries 24/7 — we'll reply as soon as we read your message",
+    notice4: "Available 24/7 — we'll get back to you promptly after reviewing your message",
   },
   zh: {
     title: '可用车型',
@@ -81,7 +81,7 @@ const LABELS: Record<string, {
     seatsUnit: '座',
     notice2: '当日预订请至少在出发2小时前咨询',
     notice3: '如车辆已被预订，可为您安排其他车种',
-    notice4: '24小时均可咨询，看到消息后将尽快回复',
+    notice4: '24小时均可咨询，确认后将尽快回复',
   },
 };
 
