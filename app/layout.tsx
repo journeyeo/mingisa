@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_JP, Inter, Archivo_Black } from 'next/font/google';
 import { LocaleProvider } from '@/contexts/LocaleContext';
 import PwaRegister from '@/components/PwaRegister';
+import { Analytics } from '@vercel/analytics/next';
 import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         <LocaleProvider>{children}</LocaleProvider>
         <PwaRegister />
+        <Analytics />
       </body>
     </html>
   );
